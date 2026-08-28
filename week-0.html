@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 0: Orientation & Team Foundations | PRICE ProtoSem | Brindha . S</title>
+  <meta name="description" content="Week 0 of PRICE ProtoSem: Inauguration ceremony, team introductions, personality tests, storytelling, and the Marshmallow & Spaghetti challenge.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: '#fdfbf0',
+              100: '#fbf5d9',
+              200: '#f6e7a6',
+              300: '#f0d56b',
+              400: '#f8d759',
+              500: '#eeba2b',
+              600: '#d39b3d',
+              700: '#b76d28',
+              800: '#8c4e1a',
+              900: '#5a2e0e',
+            },
+            obsidian: {
+              50: '#f4f5f7',
+              100: '#e4e6ec',
+              200: '#c5c9d6',
+              300: '#9fa6bb',
+              400: '#757e9b',
+              500: '#57607e',
+              600: '#424963',
+              700: '#2b3042',
+              800: '#1d1f26',
+              900: '#0f1015',
+              950: '#08090c',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation CDN -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f1015;
+      color: #f4f5f7;
+      overflow-x: hidden;
+    }
+
+    .bg-black-gold-hero {
+      background-color: #0f1015;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(238, 186, 43, 0.16) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(248, 215, 89, 0.12) 0px, transparent 55%),
+        radial-gradient(at 50% 60%, rgba(183, 109, 40, 0.12) 0px, transparent 60%),
+        linear-gradient(180deg, #0a0b0e 0%, #0f1015 50%, #14161e 100%);
+    }
+
+    .gold-grid-overlay {
+      background-size: 64px 64px;
+      background-image: 
+        linear-gradient(to right, rgba(238, 186, 43, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(238, 186, 43, 0.05) 1px, transparent 1px);
+    }
+
+    .luxe-gold-card {
+      background: rgba(20, 22, 30, 0.8);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(238, 186, 43, 0.22);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .luxe-gold-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(238, 186, 43, 0.6);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(238, 186, 43, 0.2);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 50%, #d39b3d 100%);
+      color: #0f1015;
+      box-shadow: 0 10px 25px -5px rgba(238, 186, 43, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 32px -5px rgba(238, 186, 43, 0.5);
+    }
+  </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- Top Glass Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0f1015]/90 backdrop-blur-lg border-b border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-obsidian-950 font-mono font-black text-lg flex items-center justify-center shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+          B
+        </div>
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-wider text-white uppercase flex items-center gap-1.5">
+            PORTFOLIO
+            <span class="inline-block w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+          </span>
+          <span class="text-[11px] text-gold-400 font-mono font-medium">PRICE ProtoSem • Week 0</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <a href="index.html#protosem" class="px-4 py-2 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Archive</span>
+        </a>
+        <a href="resume.html" target="_blank" class="btn-gold px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider hidden sm:flex items-center gap-2">
+          <i class="fa-solid fa-file-lines text-xs"></i>
+          <span>Resume</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="bg-black-gold-hero flex-grow pt-32 pb-24 relative overflow-hidden">
+    <div class="absolute inset-0 gold-grid-overlay opacity-40 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      
+      <!-- Breadcrumb & Phase Tag -->
+      <div class="flex items-center gap-2 text-xs font-mono mb-6" data-aos="fade-down">
+        <a href="index.html#protosem" class="text-gold-400 hover:underline">ProtoSem Archive</a>
+        <span class="text-obsidian-400">/</span>
+        <span class="text-white font-bold">Week 0</span>
+      </div>
+
+      <!-- Hero Header Card -->
+      <div class="luxe-gold-card p-8 sm:p-12 rounded-3xl mb-12 border-l-4 border-gold-500" data-aos="fade-up">
+        <div class="flex flex-wrap items-center gap-2.5 mb-4">
+          <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 text-black font-extrabold text-xs font-mono uppercase tracking-wider shadow-sm">
+            PHASE 01 // ORIENTATION
+          </span>
+          <span class="px-3 py-1 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 font-mono text-xs font-bold">
+            Chapter 0 of 20
+          </span>
+          <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-xs"></i> Completed
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
+          Week 0: Orientation & Team Foundations
+        </h1>
+        <p class="text-gold-400 text-sm sm:text-base font-mono font-medium">
+          Inauguration Ceremony, Strengths Discovery & Rapid Prototyping Kickoff
+        </p>
+      </div>
+
+      <!-- Week 0 Content Section -->
+      <div class="luxe-gold-card p-8 sm:p-12 rounded-3xl mb-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-6">
+          <i class="fa-solid fa-sparkles text-gold-400"></i>
+          <span>WEEK 0 CONTENT & FIELD REFLECTIONS</span>
+        </div>
+
+        <div class="space-y-6 text-obsidian-200 text-base sm:text-lg leading-relaxed">
+          <p>
+            Week 0 of <strong class="text-white font-bold">PRICE Protosem</strong> was all about getting started, connecting with our peers, and building a strong foundation for the journey ahead. We participated in the inauguration ceremony, team introductions, personality tests, storytelling, and the <strong class="text-gold-300 font-bold">Marshmallow & Spaghetti challenge</strong>.
+          </p>
+
+          <p>
+            These activities helped us understand our teammates’ strengths, personalities, creativity, communication, and teamwork, while bringing together students from diverse academic backgrounds.
+          </p>
+
+          <div class="p-5 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-base sm:text-lg flex items-center gap-3">
+            <span class="text-2xl">✨</span>
+            <span>A great beginning to an exciting 20-week journey of learning, collaboration, and solving real-world retail challenges!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Activities Breakdown -->
+      <div class="mb-12" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-6">
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Core Week 0 Highlights</h2>
+          <div class="h-px bg-gold-500/20 flex-grow"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+          <!-- Highlight 1 -->
+          <div class="luxe-gold-card p-6 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-landmark"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Inauguration Ceremony</h3>
+            <p class="text-obsidian-300 text-xs sm:text-sm leading-relaxed">
+              Official induction into the PRICE ProtoSem 20-week fellowship, setting the stage for problem-solving across retail, AI, and IoT.
+            </p>
+          </div>
+
+          <!-- Highlight 2 -->
+          <div class="luxe-gold-card p-6 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Team Introductions & Personality Tests</h3>
+            <p class="text-obsidian-300 text-xs sm:text-sm leading-relaxed">
+              Mapped communication styles, individual strengths, and interpersonal synergy across fellow innovators.
+            </p>
+          </div>
+
+          <!-- Highlight 3 -->
+          <div class="luxe-gold-card p-6 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Creative Storytelling</h3>
+            <p class="text-obsidian-300 text-xs sm:text-sm leading-relaxed">
+              Practicing expressive articulation, sharing vision narratives, and active listening within multidisciplinary groups.
+            </p>
+          </div>
+
+          <!-- Highlight 4 -->
+          <div class="luxe-gold-card p-6 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-shapes"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Marshmallow & Spaghetti Challenge</h3>
+            <p class="text-obsidian-300 text-xs sm:text-sm leading-relaxed">
+              Hands-on structural rapid prototyping exercise to test agile iterative development and time-critical teamwork.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navigation & Action Footer -->
+      <div class="luxe-gold-card p-8 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6" data-aos="fade-up">
+        <div>
+          <p class="text-xs uppercase font-mono text-gold-400 font-bold mb-1">PRICE ProtoSem Archive</p>
+          <p class="text-base sm:text-lg font-bold text-white">Continue exploring the 20-week innovation archive</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="index.html#protosem" class="btn-gold px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Return to Portfolio</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-obsidian-950 py-8 text-center text-xs text-obsidian-400 border-t border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
+      <span>© 2026 Brindha . S • PRICE ProtoSem Trainee</span>
+      <a href="index.html#protosem" class="text-gold-400 hover:underline">View All 20 Weeks</a>
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+</body>
+</html>

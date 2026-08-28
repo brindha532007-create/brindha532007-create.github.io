@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brindha . S - ATS-Optimized Data Science & Innovation Resume</title>
+  <meta name="description" content="ATS-friendly resume for Brindha . S, B.Sc Data Science candidate and PRICE ProtoSem Innovation Engineer Trainee.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #0f1015;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(238, 186, 43, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(183, 109, 40, 0.10) 0%, transparent 40%),
+        linear-gradient(to right, rgba(238, 186, 43, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(238, 186, 43, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: #0f1015;
+      line-height: 1.5;
+      padding: 2.5rem 1rem;
+      min-height: 100vh;
+      position: relative;
+    }
+    .resume-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(238, 186, 43, 0.25);
+      position: relative;
+      z-index: 10;
+    }
+    .action-bar {
+      max-width: 820px;
+      margin: 0 auto 1.5rem auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 50%, #d39b3d 100%);
+      color: #0f1015;
+      border: 1px solid #d39b3d;
+      box-shadow: 0 4px 12px rgba(238, 186, 43, 0.35);
+      font-weight: 700;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #fce278 0%, #f4d056 50%, #eeba2b 100%);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background-color: rgba(20, 22, 30, 0.9);
+      color: #f8d759;
+      border: 1px solid rgba(238, 186, 43, 0.35);
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover {
+      background-color: #1d1f26;
+      color: #ffffff;
+      border-color: #eeba2b;
+      transform: translateY(-1px);
+    }
+    
+    /* Resume Header */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #eeba2b;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .name {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #0f1015;
+      letter-spacing: -0.02em;
+    }
+    .title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #b76d28;
+      margin-top: 0.25rem;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #475569;
+      margin-top: 0.5rem;
+    }
+    .contact-info a {
+      color: #475569;
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    /* Section Styles */
+    .section {
+      margin-bottom: 1.2rem;
+    }
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 14px;
+      background-color: #eeba2b;
+      border-radius: 2px;
+    }
+    .text-sm {
+      font-size: 0.875rem;
+      color: #334155;
+    }
+    .item {
+      margin-bottom: 0.85rem;
+    }
+    .item:last-child {
+      margin-bottom: 0;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+    .item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .item-subtitle {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1d4ed8;
+    }
+    .item-date {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .bullet-list {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: #334155;
+    }
+    .bullet-list li {
+      margin-bottom: 0.25rem;
+    }
+    
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+    .skill-category {
+      background: #f8fafc;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      border-left: 2px solid #93c5fd;
+    }
+    .skill-category strong {
+      color: #0f172a;
+      display: inline-block;
+      margin-right: 0.25rem;
+    }
+
+    /* Print Styles (Strict ATS & 1-page compliance) */
+    @media print {
+      @page {
+        margin: 15mm;
+        size: A4 portrait;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      .no-print, header, footer, .action-bar {
+        display: none !important;
+      }
+      .resume-container {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .section-title {
+        border-bottom: 1px solid #cbd5e1 !important;
+        color: #000000 !important;
+      }
+      .section-title::before {
+        background-color: #000000 !important;
+      }
+      .name, .item-title, .title {
+        color: #000000 !important;
+      }
+      .skill-category {
+        background: #ffffff !important;
+        border-left: 2px solid #64748b !important;
+        padding: 0.25rem 0.5rem !important;
+      }
+      a {
+        text-decoration: none !important;
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Action Bar -->
+  <div class="action-bar no-print">
+    <a href="index.html" class="btn btn-outline">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Back to Portfolio</span>
+    </a>
+    <button onclick="window.print()" class="btn btn-primary">
+      <i class="fa-solid fa-print"></i>
+      <span>Print / Save as PDF</span>
+    </button>
+  </div>
+
+  <div class="resume-container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="name">BRINDHA . S</h1>
+      <div class="title">B.Sc Data Science | Innovation Engineer Trainee</div>
+      <div class="contact-info">
+        <span><i class="fa-solid fa-envelope"></i> brindha532007@gmail.com</span>
+        <span><i class="fa-brands fa-github"></i> github.com/brindha532007-create</span>
+        <span><i class="fa-solid fa-location-dot"></i> Open to Remote / On-Site</span>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="text-sm">
+        Detail-oriented and analytical <strong>B.Sc Data Science</strong> candidate and <strong>PRICE ProtoSem Innovation Trainee</strong> with a strong foundation in data manipulation, exploratory analysis, and business intelligence. Proficient in <strong>Python (Pandas, NumPy, Seaborn)</strong>, <strong>Microsoft Power BI</strong>, and <strong>Advanced Excel</strong>. Passionate about solving real-world commerce and industry challenges through AI, IoT prototyping, and statistical insights.
+      </p>
+    </section>
+
+    <!-- Professional Experience / Innovation Programme -->
+    <section class="section">
+      <h2 class="section-title">Professional & Innovation Journey</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Innovation Engineer Trainee — PRICE ProtoSem</span>
+          <span class="item-date">20-Week Programme</span>
+        </div>
+        <div class="item-subtitle">Industry-Integrated Innovation Fellowship</div>
+        <ul class="bullet-list">
+          <li>Selected for a rigorous 20-week industry-integrated programme focused on solving retail and commerce challenges through AI, analytics, intelligent systems, IoT, prototyping, and entrepreneurship.</li>
+          <li>Completed Week 0 Orientation & Team Foundations: Engaged in cohort inauguration, personality & strengths discovery, storytelling, and cross-disciplinary rapid prototyping (Marshmallow & Spaghetti Challenge).</li>
+          <li>Working directly with industry problem statements to design, develop, and validate practical technology prototypes beyond conventional classroom coursework.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Bachelor of Science (B.Sc) in Data Science</span>
+          <span class="item-date">In Progress</span>
+        </div>
+        <div class="item-subtitle">Undergraduate Degree Program</div>
+        <ul class="bullet-list">
+          <li>Core Coursework: Probability & Statistics, Data Structures, Exploratory Data Analysis, Database Management Systems, Data Visualization.</li>
+          <li>Focus: Practical applied analytics, data cleaning workflows, and quantitative problem-solving.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+      <h2 class="section-title">Technical Skills & Disciplines</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <strong>Programming & Analytics:</strong> Python (Pandas, NumPy, Matplotlib, Seaborn), SQL basics
+        </div>
+        <div class="skill-category">
+          <strong>Business Intelligence:</strong> Microsoft Power BI, Interactive Dashboards, DAX, KPI Tracking
+        </div>
+        <div class="skill-category">
+          <strong>Spreadsheet Analysis:</strong> Microsoft Excel (Pivot Tables, XLOOKUP, Nested Formulas)
+        </div>
+        <div class="skill-category">
+          <strong>Innovation Disciplines:</strong> Phygital Retail, AI & Analytics, Intelligent Systems & IoT, Prototyping
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects & Academic Highlights -->
+    <section class="section">
+      <h2 class="section-title">Projects & Academic Highlights</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Exploratory Data Analysis (EDA) Pipeline</span>
+          <span class="item-date">Python | Pandas | Seaborn</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Engineered automated data ingestion and cleaning routines to handle missing values, anomalies, and outliers in multi-variable datasets.</li>
+          <li>Constructed correlation matrices, distribution plots, and group-by summaries to uncover core behavioral patterns.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Executive Business Intelligence & KPI Dashboard</span>
+          <span class="item-date">Power BI | DAX</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Designed a multi-page interactive Power BI dashboard featuring dynamic slicers, revenue tracking, and period-over-period growth metrics.</li>
+          <li>Optimized visual hierarchy and data storytelling to allow stakeholders to drill down into performance metrics with ease.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Financial & Operational Modeling System</span>
+          <span class="item-date">Microsoft Excel | Advanced Formulas</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Developed structured Excel models utilizing multi-condition aggregations (SUMIFS/COUNTIFS), dynamic lookup formulas, and automated pivot summaries.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Core Strengths -->
+    <section class="section">
+      <h2 class="section-title">Core Competencies & Soft Skills</h2>
+      <div class="text-sm">
+        Analytical Problem Solving • Critical Thinking • Data-Driven Communication • Attention to Detail • Continuous Learning • Prototyping Mindset
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

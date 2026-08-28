@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brindha . S | Data Science & Innovation Portfolio</title>
+  <meta name="description" content="Portfolio of Brindha . S - B.Sc Data Science student specializing in Python, Power BI, Advanced Excel analytics, and PRICE ProtoSem Innovation Trainee.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: '#fdfbf0',
+              100: '#fbf5d9',
+              200: '#f6e7a6',
+              300: '#f0d56b',
+              400: '#f8d759',
+              500: '#eeba2b',
+              600: '#d39b3d',
+              700: '#b76d28',
+              800: '#8c4e1a',
+              900: '#5a2e0e',
+            },
+            obsidian: {
+              50: '#f4f5f7',
+              100: '#e4e6ec',
+              200: '#c5c9d6',
+              300: '#9fa6bb',
+              400: '#757e9b',
+              500: '#57607e',
+              600: '#424963',
+              700: '#2b3042',
+              800: '#1d1f26',
+              900: '#0f1015',
+              950: '#08090c',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'spin-slow': 'spin 18s linear infinite',
+            'float-slow': 'float 6s ease-in-out infinite',
+            'float-delayed': 'float 7s ease-in-out 2s infinite',
+            'float-fast': 'float 4s ease-in-out 1s infinite',
+            'pulse-gold': 'pulseGold 3s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s infinite linear',
+            'gradient-x': 'gradientX 10s ease infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(1.5deg)' },
+            },
+            pulseGold: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.85', transform: 'scale(1.06)' },
+            },
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(200%)' },
+            },
+            gradientX: {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation CDN -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f1015;
+      color: #f4f5f7;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Scroll Progress Bar with Gold Glow */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, #b76d28, #eeba2b, #ffffff, #f8d759, #b76d28);
+      background-size: 300% 100%;
+      animation: gradientX 6s linear infinite;
+      z-index: 100;
+      width: 0%;
+      transition: width 0.1s ease-out;
+      box-shadow: 0 0 14px rgba(238, 186, 43, 0.9), 0 0 4px #ffffff;
+    }
+
+    /* Black and Gold Modern Mesh Backgrounds */
+    .bg-black-gold-hero {
+      background-color: #0f1015;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(238, 186, 43, 0.18) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(248, 215, 89, 0.12) 0px, transparent 55%),
+        radial-gradient(at 50% 60%, rgba(183, 109, 40, 0.14) 0px, transparent 60%),
+        radial-gradient(at 90% 85%, rgba(238, 186, 43, 0.15) 0px, transparent 55%),
+        radial-gradient(at 10% 85%, rgba(211, 155, 61, 0.12) 0px, transparent 50%),
+        linear-gradient(180deg, #0a0b0e 0%, #0f1015 50%, #14161e 100%);
+      background-size: 140% 140%;
+      position: relative;
+    }
+
+    .bg-black-gold-section {
+      background-color: #0b0c10;
+      background-image: 
+        radial-gradient(at 20% 20%, rgba(238, 186, 43, 0.08) 0px, transparent 55%),
+        radial-gradient(at 80% 30%, rgba(183, 109, 40, 0.09) 0px, transparent 60%),
+        radial-gradient(at 50% 80%, rgba(248, 215, 89, 0.06) 0px, transparent 65%);
+      position: relative;
+    }
+
+    .bg-black-gold-alt {
+      background-color: #0e1017;
+      background-image: 
+        radial-gradient(at 85% 15%, rgba(238, 186, 43, 0.09) 0px, transparent 50%),
+        radial-gradient(at 15% 45%, rgba(183, 109, 40, 0.07) 0px, transparent 55%),
+        radial-gradient(at 80% 85%, rgba(248, 215, 89, 0.08) 0px, transparent 60%);
+      position: relative;
+    }
+
+    /* Architectural Gold Geometric Grid Overlay */
+    .gold-grid-overlay {
+      background-size: 64px 64px;
+      background-image: 
+        linear-gradient(to right, rgba(238, 186, 43, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(238, 186, 43, 0.05) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.2) 90%);
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.2) 90%);
+    }
+
+    .gold-dot-matrix {
+      background-image: radial-gradient(rgba(238, 186, 43, 0.15) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+    }
+
+    /* Interactive Dual Spotlight Following Cursor */
+    .spotlight-glow {
+      pointer-events: none;
+      position: fixed;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(238, 186, 43, 0.16) 0%, rgba(183, 109, 40, 0.06) 35%, rgba(238, 186, 43, 0) 70%);
+      transform: translate(-50%, -50%);
+      z-index: 40;
+      transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+    }
+
+    /* Aurora Animated Gold Glow Blobs */
+    @keyframes morphBlob {
+      0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(0, 0) scale(1) rotate(0deg); }
+      34% { border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%; transform: translate(30px, -30px) scale(1.08) rotate(45deg); }
+      67% { border-radius: 70% 30% 50% 50% / 30% 40% 60% 70%; transform: translate(-25px, 20px) scale(0.95) rotate(-30deg); }
+    }
+
+    .aurora-blob {
+      position: absolute;
+      filter: blur(85px);
+      pointer-events: none;
+      z-index: 0;
+      animation: morphBlob 14s ease-in-out infinite alternate;
+      will-change: transform, border-radius;
+    }
+
+    .aurora-blob-delayed {
+      animation-delay: -5s;
+      animation-duration: 18s;
+    }
+
+    .aurora-blob-fast {
+      animation-delay: -9s;
+      animation-duration: 12s;
+    }
+
+    /* Luxury Black & Gold Glassmorphic Cards */
+    .luxe-gold-card {
+      background: rgba(20, 22, 30, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(238, 186, 43, 0.22);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .luxe-gold-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(238, 186, 43, 0.65);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(238, 186, 43, 0.25);
+    }
+
+    /* Week Cards */
+    .week-card {
+      background: rgba(20, 22, 30, 0.85);
+      color: #f4f5f7;
+      border-radius: 1.15rem;
+      border: 1px solid rgba(238, 186, 43, 0.18);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .week-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(238, 186, 43, 0.2), transparent);
+      transform: skewX(-20deg);
+      transition: none;
+    }
+    .week-card:hover::after {
+      left: 140%;
+      transition: all 0.75s ease-in-out;
+    }
+    .week-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: rgba(238, 186, 43, 0.6);
+      box-shadow: 0 18px 30px -8px rgba(0, 0, 0, 0.8), 0 0 18px rgba(238, 186, 43, 0.2);
+    }
+    .week-card:hover .week-title {
+      color: #eeba2b;
+    }
+
+    /* Glowing Rotating Gold Ring around Avatar */
+    .avatar-glow-ring {
+      position: relative;
+    }
+    .avatar-glow-ring::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #0f1015, #f8d759, #eeba2b, #b76d28, #f4d056, #0f1015);
+      animation: spin 12s linear infinite;
+      filter: blur(12px);
+      opacity: 0.85;
+      z-index: 0;
+    }
+    .avatar-glow-ring::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f8d759, #eeba2b, #b76d28);
+      z-index: 1;
+    }
+
+    .avatar-frame {
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      border: 5px solid #0f1015;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      position: relative;
+      z-index: 2;
+    }
+    @media (min-width: 1024px) {
+      .avatar-frame {
+        width: 320px;
+        height: 320px;
+      }
+    }
+
+    /* Interactive Floating Badges */
+    .floating-pill {
+      box-shadow: 0 14px 28px -3px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(238, 186, 43, 0.4) inset;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+    .floating-pill:hover {
+      transform: scale(1.12) translateY(-4px) !important;
+      box-shadow: 0 20px 36px -3px rgba(238, 186, 43, 0.3);
+      border-color: #eeba2b;
+    }
+
+    /* Gold Metallic Shimmer Button */
+    .btn-gold {
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 50%, #d39b3d 100%);
+      color: #0f1015;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(238, 186, 43, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 32px -5px rgba(238, 186, 43, 0.5);
+    }
+    .btn-gold::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      animation: shimmer 3s infinite ease-in-out;
+    }
+
+    /* Custom Gold Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f1015;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #f8d759, #eeba2b, #b76d28);
+      border-radius: 4px;
+      border: 1px solid #0f1015;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f8d759;
+    }
+
+    /* Section Wave Divider */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .wave-divider svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 60px;
+    }
+
+    /* Nav Link Hover */
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 0.25rem;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0%;
+      height: 2px;
+      background: #eeba2b;
+      border-radius: 9999px;
+      transform: translateX(-50%);
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="relative selection:bg-gold-500 selection:text-black">
+
+  <!-- Editorial Film Grain Texture Overlay -->
+  <div class="fixed inset-0 pointer-events-none z-50 opacity-[0.035] mix-blend-overlay" style="background-image: url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><filter id=\"noiseFilter\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.85\" numOctaves=\"3\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23noiseFilter)\"/></svg>');"></div>
+
+  <!-- Interactive Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Mouse Spotlight Glow -->
+  <div id="spotlight" class="spotlight-glow hidden md:block"></div>
+
+  <!-- ======================================================== -->
+  <!-- 1. HERO SECTION: BLACK & GOLD MODERN ELEGANT PRESENTATION -->
+  <!-- ======================================================== -->
+  <div class="bg-black-gold-hero overflow-hidden relative">
+    
+    <!-- Background Animated Canvas (Interactive Neural Constellations & Gold Streams) -->
+    <canvas id="hero-particle-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-45"></canvas>
+    
+    <!-- Gold Cyber Grid Overlay -->
+    <div class="absolute inset-0 gold-grid-overlay opacity-80 pointer-events-none z-0"></div>
+    <div class="absolute inset-0 gold-dot-matrix opacity-30 pointer-events-none z-0"></div>
+
+    <!-- Geometric Corner Border Frames (From Canva Black & Gold Template) -->
+    <div class="absolute top-6 left-6 w-20 h-20 border-t-2 border-l-2 border-gold-500/40 pointer-events-none z-0"></div>
+    <div class="absolute top-6 right-6 w-20 h-20 border-t-2 border-r-2 border-gold-500/40 pointer-events-none z-0"></div>
+
+    <!-- Gold Aurora Mesh Gradient Blobs -->
+    <div class="aurora-blob w-[520px] h-[520px] bg-gradient-to-tr from-gold-500/25 to-gold-300/15 -top-24 -left-20"></div>
+    <div class="aurora-blob aurora-blob-delayed w-[480px] h-[480px] bg-gradient-to-br from-gold-600/20 to-amber-700/10 top-1/3 -right-24"></div>
+    <div class="aurora-blob aurora-blob-fast w-[380px] h-[380px] bg-gradient-to-r from-gold-400/15 to-transparent bottom-10 left-1/4"></div>
+
+    <!-- Floating Background Data Science Glyphs in Gold -->
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden font-mono select-none opacity-20 text-gold-400">
+      <span class="absolute top-[18%] left-[8%] text-2xl font-bold animate-float-slow">01</span>
+      <span class="absolute top-[35%] right-[10%] text-xl font-bold animate-float-delayed">y = f(x)</span>
+      <span class="absolute bottom-[28%] left-[12%] text-2xl font-bold animate-float-fast">&Sigma;</span>
+      <span class="absolute top-[60%] right-[22%] text-lg font-bold animate-float-slow">&mu; &plusmn; &sigma;</span>
+      <span class="absolute bottom-[15%] right-[8%] text-xl font-bold animate-float-delayed">DataFrame</span>
+    </div>
+
+    <!-- Top Sticky / Glass Navbar -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0f1015]/85 backdrop-blur-lg border-b border-gold-500/15">
+      <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <!-- Logo with gold badge -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-obsidian-950 font-mono font-black text-lg flex items-center justify-center shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-all duration-200">
+            B
+          </div>
+          <div class="flex flex-col">
+            <span class="text-base sm:text-lg font-extrabold tracking-wider text-white uppercase flex items-center gap-1.5">
+              PORTFOLIO
+              <span class="inline-block w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+            </span>
+            <span class="text-[11px] text-gold-400 font-mono font-medium tracking-tight">Brindha . S • Data Science</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-obsidian-200">
+          <a href="#about" class="nav-link hover:text-gold-400">About</a>
+          <a href="#education" class="nav-link hover:text-gold-400">Education</a>
+          <a href="#skills" class="nav-link hover:text-gold-400">Skills</a>
+          <a href="#protosem" class="nav-link text-gold-400 font-extrabold flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+            ProtoSem
+          </a>
+          <a href="#projects" class="nav-link hover:text-gold-400">Projects</a>
+          <a href="#contact" class="nav-link hover:text-gold-400">Contact</a>
+        </nav>
+
+        <!-- Right Action Buttons -->
+        <div class="flex items-center gap-3">
+          <button onclick="copyEmail()" id="nav-copy-btn" class="hidden sm:inline-flex px-3.5 py-2 rounded-full bg-obsidian-800/80 hover:bg-obsidian-700 text-gold-400 transition-all text-xs font-bold font-mono items-center gap-1.5 border border-gold-500/25 shadow-sm" title="Copy Email">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy Email</span>
+          </button>
+          
+          <a href="resume.html" target="_blank" class="btn-gold px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-file-lines text-xs"></i>
+            <span>ATS Resume</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Content -->
+    <section id="hero" class="relative z-10 max-w-6xl mx-auto px-6 pt-36 pb-20 lg:pt-44 lg:pb-28">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Editorial Column -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left" data-aos="fade-right" data-aos-duration="900">
+          
+          <!-- Live Status Badge -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-900/90 backdrop-blur-md border border-gold-500/40 text-gold-300 text-xs font-bold tracking-wider uppercase shadow-md shadow-black/60">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold-500"></span>
+            </span>
+            <span>2024 / 2026 • DATA SCIENCE & INNOVATION</span>
+          </div>
+
+          <!-- Main Dynamic Typing Header -->
+          <div class="space-y-2">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15]">
+              Hi, I'm <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 font-black">
+                Brindha . S
+              </span>
+            </h1>
+            
+            <!-- Dynamic Typing Effect Subtitle -->
+            <div class="text-lg sm:text-xl font-bold font-mono text-obsidian-200 pt-1 flex items-center justify-center lg:justify-start gap-1">
+              <span>I specialize in</span>
+              <span id="typewriter-text" class="text-gold-400 bg-obsidian-800/80 px-2.5 py-0.5 rounded-md font-extrabold border border-gold-500/25"></span>
+              <span class="inline-block w-1.5 h-5 bg-gold-400 animate-pulse"></span>
+            </div>
+          </div>
+
+          <p class="text-obsidian-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
+            Undergraduate in <strong class="text-white font-bold">B.Sc Data Science</strong> & <strong class="text-gold-400 font-bold">PRICE ProtoSem Innovation Trainee</strong>. Transforming complex business problem statements into dynamic visual intelligence using <span class="bg-obsidian-800 text-gold-300 px-2 py-0.5 rounded font-bold border border-gold-500/30">Python</span>, <span class="bg-obsidian-800 text-gold-300 px-2 py-0.5 rounded font-bold border border-gold-500/30">Power BI</span>, and <span class="bg-obsidian-800 text-gold-300 px-2 py-0.5 rounded font-bold border border-gold-500/30">Excel</span>.
+          </p>
+
+          <!-- Buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="mailto:brindha532007@gmail.com" class="btn-gold px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Let's Connect</span>
+            </a>
+            <a href="resume.html" target="_blank" class="px-8 py-3.5 rounded-full bg-obsidian-800/90 text-white hover:bg-obsidian-700 border border-gold-500/30 text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-105 flex items-center gap-2">
+              <i class="fa-solid fa-download text-gold-400"></i>
+              <span>Download CV</span>
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex items-center justify-center lg:justify-start gap-3 pt-2 text-obsidian-300">
+            <a href="mailto:brindha532007@gmail.com" class="w-11 h-11 rounded-full bg-obsidian-800 border border-gold-500/20 flex items-center justify-center hover:bg-gold-500 hover:text-black hover:border-gold-400 transition-all duration-200 shadow-sm hover:scale-110" title="Email Brindha">
+              <i class="fa-solid fa-envelope text-base"></i>
+            </a>
+            <a href="https://github.com/brindha532007-create" target="_blank" class="w-11 h-11 rounded-full bg-obsidian-800 border border-gold-500/20 flex items-center justify-center hover:bg-gold-500 hover:text-black hover:border-gold-400 transition-all duration-200 shadow-sm hover:scale-110" title="GitHub Profile">
+              <i class="fa-brands fa-github text-base"></i>
+            </a>
+            <a href="#protosem" class="w-11 h-11 rounded-full bg-obsidian-800 border border-gold-500/20 flex items-center justify-center hover:bg-gold-500 hover:text-black hover:border-gold-400 transition-all duration-200 shadow-sm hover:scale-110" title="ProtoSem Fellowship Archive">
+              <i class="fa-solid fa-compass text-base"></i>
+            </a>
+            <button onclick="copyEmail()" class="w-11 h-11 rounded-full bg-obsidian-800 border border-gold-500/20 flex items-center justify-center hover:bg-gold-500 hover:text-black hover:border-gold-400 transition-all duration-200 shadow-sm hover:scale-110" title="Copy Email to Clipboard">
+              <i class="fa-solid fa-link text-base"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Avatar with Rotating Gold Aura Ring -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end relative" data-aos="fade-left" data-aos-duration="900">
+          
+          <div class="relative flex items-center justify-center">
+            
+            <!-- Glowing Rotating Conic Gold Ring -->
+            <div class="avatar-glow-ring flex items-center justify-center">
+              <div class="avatar-frame overflow-hidden bg-obsidian-950">
+                <img 
+                  src="profile.jpg" 
+                  alt="Brindha . S" 
+                  class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                  style="object-position: center 18%;"
+                  onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Brindha+S&background=0f1015&color=eeba2b&size=512'"
+                >
+              </div>
+            </div>
+
+            <!-- Floating Interactive Badge 1: Python -->
+            <div class="floating-pill absolute -top-4 -left-6 sm:-left-8 bg-obsidian-900/90 text-white px-3.5 py-2 rounded-2xl flex items-center gap-2.5 animate-float-slow z-20 cursor-pointer border border-gold-500/40">
+              <div class="w-8 h-8 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center text-sm font-bold border border-gold-500/30">
+                <i class="fa-brands fa-python"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-[10px] font-mono uppercase text-gold-400 font-bold leading-none">Analytics</p>
+                <p class="text-xs font-bold text-white">Python & EDA</p>
+              </div>
+            </div>
+
+            <!-- Floating Interactive Badge 2: Power BI -->
+            <div class="floating-pill absolute -bottom-4 -left-4 sm:-left-6 bg-obsidian-900/90 text-white px-3.5 py-2 rounded-2xl flex items-center gap-2.5 animate-float-delayed z-20 cursor-pointer border border-gold-500/40">
+              <div class="w-8 h-8 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center text-sm font-bold border border-gold-500/30">
+                <i class="fa-solid fa-chart-column"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-[10px] font-mono uppercase text-gold-400 font-bold leading-none">Dashboards</p>
+                <p class="text-xs font-bold text-white">Power BI DAX</p>
+              </div>
+            </div>
+
+            <!-- Floating Interactive Badge 3: ProtoSem Trainee -->
+            <div class="floating-pill absolute top-12 -right-6 sm:-right-8 bg-obsidian-900/90 text-white px-3.5 py-2 rounded-2xl flex items-center gap-2.5 animate-float-fast z-20 cursor-pointer border border-gold-500/40">
+              <div class="w-8 h-8 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center text-sm font-bold border border-gold-500/30">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-[10px] font-mono uppercase text-gold-400 font-bold leading-none">Fellowship</p>
+                <p class="text-xs font-bold text-white">PRICE ProtoSem</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Architectural Bar Strip Accent with Animated Stat Counters -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 pb-14">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto lg:mx-0">
+        
+        <div class="luxe-gold-card p-5 rounded-2xl text-center group">
+          <p class="text-3xl font-extrabold text-gold-400 font-mono tracking-tight flex items-center justify-center gap-1">
+            <span>B.Sc</span>
+          </p>
+          <p class="text-xs uppercase tracking-wider font-bold text-obsidian-300 mt-1">Data Science Track</p>
+        </div>
+
+        <div class="luxe-gold-card p-5 rounded-2xl text-center group">
+          <p class="text-3xl font-extrabold text-white font-mono tracking-tight flex items-center justify-center gap-0.5">
+            <span class="counter" data-target="20">0</span><span>-Wk</span>
+          </p>
+          <p class="text-xs uppercase tracking-wider font-bold text-gold-400 mt-1">PRICE ProtoSem</p>
+        </div>
+
+        <div class="luxe-gold-card p-5 rounded-2xl text-center group">
+          <p class="text-3xl font-extrabold text-gold-400 font-mono tracking-tight flex items-center justify-center gap-0.5">
+            <span class="counter" data-target="100">0</span><span>%</span>
+          </p>
+          <p class="text-xs uppercase tracking-wider font-bold text-obsidian-300 mt-1">Analytical Dedication</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Curved Gold Wave Section Divider -->
+    <div class="wave-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C200,80 400,-20 600,45 C800,110 1000,10 1200,50 L1200,120 L0,120 Z" fill="#0b0c10"></path>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 2. BLACK & GOLD SECTION: ABOUT & EDUCATION               -->
+  <!-- ======================================================== -->
+  <div class="bg-black-gold-section py-24 relative overflow-hidden">
+    
+    <!-- Background Gold Grid -->
+    <div class="absolute inset-0 gold-grid-overlay opacity-50 pointer-events-none"></div>
+    
+    <div class="aurora-blob w-[520px] h-[520px] bg-gradient-to-br from-gold-500/15 to-transparent top-10 -left-28"></div>
+    <div class="aurora-blob aurora-blob-delayed w-[480px] h-[480px] bg-gradient-to-tl from-gold-600/12 to-transparent bottom-12 -right-24"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      
+      <!-- About Section -->
+      <section id="about" class="mb-24">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-3 shadow-inner">
+            <i class="fa-solid fa-fingerprint text-xs"></i>
+            <span>01 // PROFILE & PASSION</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">About & Current Focus</h2>
+          <p class="text-obsidian-300 text-sm sm:text-base mt-3 font-normal">Bridging statistical rigorousness with business storytelling</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Card 1 -->
+          <div class="luxe-gold-card p-8 sm:p-10 group rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:border-gold-400 transition-all duration-300 shadow-md">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-300">Degree Focus</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-gold-400 transition-colors">Academic Foundation</h3>
+            <p class="text-obsidian-300 leading-relaxed text-sm sm:text-base">
+              Currently pursuing <strong class="text-gold-400">B.Sc Data Science</strong>. I focus on developing a strong quantitative foundation spanning exploratory data analysis, business statistics, predictive techniques, and database structuring.
+            </p>
+            
+            <div class="mt-8 pt-6 border-t border-gold-500/15 flex flex-wrap gap-2">
+              <span class="px-3.5 py-1.5 text-xs rounded-lg bg-obsidian-900 text-gold-300 border border-gold-500/25 font-mono">📊 Data Analytics</span>
+              <span class="px-3.5 py-1.5 text-xs rounded-lg bg-obsidian-900 text-gold-300 border border-gold-500/25 font-mono">📐 Business Statistics</span>
+              <span class="px-3.5 py-1.5 text-xs rounded-lg bg-obsidian-900 text-gold-300 border border-gold-500/25 font-mono">📈 Visualization</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="luxe-gold-card p-8 sm:p-10 group rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:border-gold-400 transition-all duration-300 shadow-md">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-300">Execution</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-gold-400 transition-colors">Analytical Passion</h3>
+            <p class="text-obsidian-300 leading-relaxed text-sm sm:text-base">
+              I love finding patterns hidden in spreadsheets and datasets. Whether it's crafting interactive executive dashboards in <strong class="text-gold-400">Power BI</strong>, performing data wrangling in <strong class="text-gold-400">Python</strong>, or automating calculations in <strong class="text-gold-400">Excel</strong>, my goal is to make data clear and actionable.
+            </p>
+            
+            <div class="mt-8 pt-6 border-t border-gold-500/15 flex flex-wrap gap-2">
+              <span class="px-3.5 py-1.5 text-xs rounded-lg bg-obsidian-900 text-gold-300 border border-gold-500/25 font-mono">💡 Data Storytelling</span>
+              <span class="px-3.5 py-1.5 text-xs rounded-lg bg-obsidian-900 text-gold-300 border border-gold-500/25 font-mono">🎯 KPI Tracking</span>
+              <span class="px-3.5 py-1.5 text-xs rounded-lg bg-obsidian-900 text-gold-300 border border-gold-500/25 font-mono">🔍 Pattern Recognition</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Timeline Section -->
+      <section id="education">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-3 shadow-inner">
+            <i class="fa-solid fa-timeline text-xs"></i>
+            <span>02 // ACADEMIC MILESTONES</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">History of Education</h2>
+          <p class="text-obsidian-300 text-sm sm:text-base mt-3">Formal education and industry-integrated fellowship milestones</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto relative pl-8 sm:pl-12 border-l-2 border-gold-500/30 space-y-10" data-aos="fade-up">
+          
+          <!-- Timeline Item 1 -->
+          <div class="relative group">
+            <div class="absolute -left-[41px] sm:-left-[57px] top-6 w-6 h-6 rounded-full bg-gold-400 border-4 border-obsidian-950 shadow-md group-hover:scale-125 transition-transform duration-200"></div>
+            
+            <div class="luxe-gold-card p-7 sm:p-8 rounded-2xl hover:border-gold-400 transition-all">
+              <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Bachelor of Science (B.Sc) in Data Science</h3>
+                <span class="text-xs font-bold text-gold-400 bg-obsidian-900 px-3.5 py-1.5 rounded-full border border-gold-500/30 w-fit font-mono">2024 - Present</span>
+              </div>
+              <p class="text-xs font-bold font-mono text-obsidian-400 uppercase tracking-wider mb-3">Undergraduate Degree Program</p>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-5">
+                Core computational mathematics, statistical methods, predictive techniques, exploratory research, and visual analytics.
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs font-mono text-obsidian-300">
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">Statistics</span>
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">Data Wrangling</span>
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">Data Visualization</span>
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">Mathematical Foundations</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="relative group">
+            <div class="absolute -left-[41px] sm:-left-[57px] top-6 w-6 h-6 rounded-full bg-gold-400 border-4 border-obsidian-950 shadow-md group-hover:scale-125 transition-transform duration-200"></div>
+            
+            <div class="luxe-gold-card p-7 sm:p-8 rounded-2xl hover:border-gold-400 transition-all">
+              <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">PRICE ProtoSem Fellowship</h3>
+                <span class="text-xs font-bold text-gold-400 bg-obsidian-900 px-3.5 py-1.5 rounded-full border border-gold-500/30 w-fit font-mono">20-Week Programme</span>
+              </div>
+              <p class="text-xs font-bold font-mono text-obsidian-400 uppercase tracking-wider mb-3">Innovation Engineer Trainee</p>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-5">
+                Selected for an intensive 20-week industry-integrated programme solving retail and commerce problem statements through AI, IoT, prototyping, and analytics.
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs font-mono text-obsidian-300">
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">Retail AI</span>
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">IoT & Edge Sensing</span>
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">Rapid Prototyping</span>
+                <span class="bg-obsidian-900 px-3 py-1 rounded-md border border-gold-500/20">Design Thinking</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Gold Section Wave Divider -->
+    <div class="wave-divider mt-16">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="#0e1017"></path>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 3. BLACK & GOLD SECTION: SKILLS, PROTOSEM & PROJECTS     -->
+  <!-- ======================================================== -->
+  <div class="bg-black-gold-alt py-24 relative overflow-hidden">
+    
+    <div class="absolute inset-0 gold-grid-overlay opacity-40 pointer-events-none"></div>
+    <div class="aurora-blob w-[500px] h-[500px] bg-gradient-to-tr from-gold-500/15 to-transparent -top-20 -right-20"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+
+      <!-- Skills Section -->
+      <section id="skills" class="mb-24">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-3 shadow-xs">
+            <i class="fa-solid fa-code text-xs"></i>
+            <span>03 // TECHNICAL ARSENAL</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">Technical Toolkit</h2>
+          <p class="text-obsidian-300 text-sm sm:text-base mt-3 font-normal">Core technologies and practical workflows applied in projects</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Skill Card 1: Python -->
+          <div class="luxe-gold-card p-8 group flex flex-col justify-between rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 transition-all duration-300 shadow-sm">
+                  <i class="fa-brands fa-python"></i>
+                </div>
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 border border-gold-500/30">Primary Core</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Python for Data Science</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed mb-6">
+                Scripting, data manipulation, cleaning, statistical summarization, and exploratory data analysis (EDA).
+              </p>
+            </div>
+            
+            <div class="space-y-3 pt-4 border-t border-gold-500/15 text-xs font-medium text-obsidian-400">
+              <div class="flex justify-between">
+                <span>Pandas & NumPy Wrangling</span>
+                <span class="text-gold-400 font-bold font-mono">88%</span>
+              </div>
+              <div class="w-full bg-obsidian-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-500 to-gold-400 h-full rounded-full transition-all duration-1000" style="width: 88%"></div>
+              </div>
+              
+              <div class="flex justify-between pt-1">
+                <span>Matplotlib & Seaborn Visuals</span>
+                <span class="text-gold-400 font-bold font-mono">82%</span>
+              </div>
+              <div class="w-full bg-obsidian-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-full rounded-full transition-all duration-1000" style="width: 82%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 2: Excel -->
+          <div class="luxe-gold-card p-8 group flex flex-col justify-between rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 transition-all duration-300 shadow-sm">
+                  <i class="fa-solid fa-file-excel"></i>
+                </div>
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 border border-gold-500/30">Modeling</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Advanced Microsoft Excel</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed mb-6">
+                Multi-criteria lookup modeling, automated summary tables, data synthesis, and structured business reporting.
+              </p>
+            </div>
+            
+            <div class="space-y-3 pt-4 border-t border-gold-500/15 text-xs font-medium text-obsidian-400">
+              <div class="flex justify-between">
+                <span>Pivot Tables & Pivot Charts</span>
+                <span class="text-gold-400 font-bold font-mono">92%</span>
+              </div>
+              <div class="w-full bg-obsidian-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-500 to-gold-400 h-full rounded-full transition-all duration-1000" style="width: 92%"></div>
+              </div>
+              
+              <div class="flex justify-between pt-1">
+                <span>XLOOKUP & Nested Logic</span>
+                <span class="text-gold-400 font-bold font-mono">85%</span>
+              </div>
+              <div class="w-full bg-obsidian-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-full rounded-full transition-all duration-1000" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 3: Power BI -->
+          <div class="luxe-gold-card p-8 group flex flex-col justify-between rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 transition-all duration-300 shadow-sm">
+                  <i class="fa-solid fa-chart-column"></i>
+                </div>
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 border border-gold-500/30">Dashboards</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Microsoft Power BI</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed mb-6">
+                Transforming raw business queries into dynamic interactive dashboards with DAX measures and clean UI.
+              </p>
+            </div>
+            
+            <div class="space-y-3 pt-4 border-t border-gold-500/15 text-xs font-medium text-obsidian-400">
+              <div class="flex justify-between">
+                <span>Interactive Visual Dashboards</span>
+                <span class="text-gold-400 font-bold font-mono">86%</span>
+              </div>
+              <div class="w-full bg-obsidian-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-500 to-gold-400 h-full rounded-full transition-all duration-1000" style="width: 86%"></div>
+              </div>
+              
+              <div class="flex justify-between pt-1">
+                <span>Data Modeling & DAX Measures</span>
+                <span class="text-gold-400 font-bold font-mono">80%</span>
+              </div>
+              <div class="w-full bg-obsidian-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-full rounded-full transition-all duration-1000" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PROTOSEM 20-WEEK JOURNEY -->
+      <section id="protosem" class="mb-24">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-3 shadow-md">
+            <i class="fa-solid fa-compass text-xs"></i>
+            <span>04 // FELLOWSHIP TRACK</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">PRICE ProtoSem Archive</h2>
+          <p class="text-obsidian-300 text-sm sm:text-base mt-3">20-Week Industry-Integrated Innovation Journey & Sprints</p>
+        </div>
+
+        <!-- Overview Card -->
+        <div class="luxe-gold-card p-8 sm:p-10 mb-10 border-l-4 border-gold-500 rounded-3xl" data-aos="fade-up">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2.5 text-gold-400 text-xs font-bold tracking-wider uppercase font-mono">
+              <i class="fa-solid fa-compass text-gold-400 text-sm"></i>
+              <span>Innovation Engineer Trainee • 20 Weeks Intensive</span>
+            </div>
+            <p class="text-white text-base sm:text-lg leading-relaxed font-normal">
+              Selected for a 20-week industry-integrated innovation programme focused on solving real-world retail and commerce challenges through AI, analytics, intelligent systems, IoT, prototyping, and entrepreneurship.
+            </p>
+            <p class="text-obsidian-300 text-sm leading-relaxed">
+              Working with industry problem statements to explore, develop, and validate practical technology solutions beyond conventional classroom learning.
+            </p>
+          </div>
+
+          <!-- 5 Focus Disciplines -->
+          <div class="mt-6 pt-6 border-t border-gold-500/15">
+            <p class="text-xs uppercase font-bold text-gold-400 mb-3 font-mono">Core Programme Disciplines:</p>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="px-3.5 py-1.5 rounded-xl bg-obsidian-900 border border-gold-500/25 text-obsidian-200 text-xs font-semibold hover:border-gold-400 transition-colors">🏪 Phygital Retail & Intelligent Commerce</span>
+              <span class="px-3.5 py-1.5 rounded-xl bg-obsidian-900 border border-gold-500/25 text-obsidian-200 text-xs font-semibold hover:border-gold-400 transition-colors">🧠 AI & Analytics</span>
+              <span class="px-3.5 py-1.5 rounded-xl bg-obsidian-900 border border-gold-500/25 text-obsidian-200 text-xs font-semibold hover:border-gold-400 transition-colors">📡 Intelligent Systems & IoT</span>
+              <span class="px-3.5 py-1.5 rounded-xl bg-obsidian-900 border border-gold-500/25 text-obsidian-200 text-xs font-semibold hover:border-gold-400 transition-colors">⚡ Rapid Prototyping</span>
+              <span class="px-3.5 py-1.5 rounded-xl bg-obsidian-900 border border-gold-500/25 text-obsidian-200 text-xs font-semibold hover:border-gold-400 transition-colors">🚀 Entrepreneurship & Go-to-Market</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Tabs & Search Bar -->
+        <div class="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 mb-8" data-aos="fade-up">
+          <div class="flex flex-wrap gap-2" id="phase-filters">
+            <button onclick="filterProtoSem('all', this)" class="phase-btn active px-4 py-2 rounded-full text-xs font-extrabold bg-gradient-to-r from-gold-400 to-gold-600 text-black shadow-sm hover:scale-105 transition-all">
+              All (Weeks 00–20)
+            </button>
+            <button onclick="filterProtoSem('1', this)" class="phase-btn px-4 py-2 rounded-full text-xs font-semibold bg-obsidian-900 border border-gold-500/25 hover:border-gold-400 text-obsidian-200 transition-all">
+              Phase 01 (W00–05)
+            </button>
+            <button onclick="filterProtoSem('2', this)" class="phase-btn px-4 py-2 rounded-full text-xs font-semibold bg-obsidian-900 border border-gold-500/25 hover:border-gold-400 text-obsidian-200 transition-all">
+              Phase 02 (W06–10)
+            </button>
+            <button onclick="filterProtoSem('3', this)" class="phase-btn px-4 py-2 rounded-full text-xs font-semibold bg-obsidian-900 border border-gold-500/25 hover:border-gold-400 text-obsidian-200 transition-all">
+              Phase 03 (W11–15)
+            </button>
+            <button onclick="filterProtoSem('4', this)" class="phase-btn px-4 py-2 rounded-full text-xs font-semibold bg-obsidian-900 border border-gold-500/25 hover:border-gold-400 text-obsidian-200 transition-all">
+              Phase 04 (W16–20)
+            </button>
+          </div>
+
+          <!-- Quick Search Filter Input -->
+          <div class="relative min-w-[240px]">
+            <input 
+              type="text" 
+              id="week-search" 
+              oninput="searchProtoSem(this.value)" 
+              placeholder="Search week or keyword..." 
+              class="w-full pl-9 pr-4 py-2 rounded-full bg-obsidian-900 border border-gold-500/30 text-xs text-white placeholder-obsidian-400 focus:outline-none focus:border-gold-400 shadow-sm"
+            >
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gold-400 text-xs"></i>
+          </div>
+        </div>
+
+        <!-- 20 Week Dynamic Grid -->
+        <div id="protosem-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Toast Feedback -->
+        <div id="protosem-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+          <div class="bg-obsidian-950 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-gold-500/40 text-xs sm:text-sm font-mono">
+            <i class="fa-solid fa-sparkles text-gold-400 text-base"></i>
+            <span id="toast-message">Field notes in progress</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-3 shadow-xs">
+            <i class="fa-solid fa-layer-group text-xs"></i>
+            <span>05 // CASE STUDIES</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">Featured Projects</h2>
+          <p class="text-obsidian-300 text-sm sm:text-base mt-3">Hands-on applications, analytics models & practical data projects</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Project 1: Python EDA -->
+          <div class="luxe-gold-card p-7 flex flex-col justify-between group rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <!-- Visual Code / Terminal Banner -->
+              <div class="h-36 rounded-2xl bg-obsidian-950 p-4 flex flex-col justify-between mb-5 border border-gold-500/20 shadow-inner group-hover:border-gold-500/40 transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <span class="text-[10px] font-mono text-gold-400 uppercase">eda_pipeline.py</span>
+                </div>
+                <div class="font-mono text-xs text-gold-200">
+                  <span class="text-obsidian-400"># Profiling & Distribution</span><br>
+                  df.groupby('segment').agg({'revenue': ['mean', 'sum']})
+                </div>
+                <div class="flex justify-between items-center text-[10px] text-obsidian-400 font-mono">
+                  <span>Pandas • Seaborn</span>
+                  <span class="text-gold-400 font-bold">100% Cleaned</span>
+                </div>
+              </div>
+              
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">
+                Exploratory Data Analysis (EDA) with Python
+              </h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed mb-5">
+                Data cleaning pipeline, statistical distribution profiling, missing value imputation, and outlier identification using Pandas, Matplotlib, and Seaborn.
+              </p>
+            </div>
+            
+            <div class="pt-4 border-t border-gold-500/15 flex items-center justify-between text-xs font-mono">
+              <span class="text-gold-300 bg-obsidian-900 border border-gold-500/20 px-2.5 py-1 rounded">Python • Pandas</span>
+              <span class="text-emerald-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-circle-check text-xs"></i> Completed
+              </span>
+            </div>
+          </div>
+
+          <!-- Project 2: Power BI -->
+          <div class="luxe-gold-card p-7 flex flex-col justify-between group rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+            <div>
+              <!-- Visual Code / Terminal Banner -->
+              <div class="h-36 rounded-2xl bg-obsidian-950 p-4 flex flex-col justify-between mb-5 border border-gold-500/20 shadow-inner group-hover:border-gold-500/40 transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <span class="text-[10px] font-mono text-gold-400 uppercase">Executive_BI.pbix</span>
+                </div>
+                <div class="font-mono text-xs text-gold-200">
+                  <span class="text-obsidian-400">-- Executive KPI Metric</span><br>
+                  YoY_Growth = DIVIDE([CurrentRev] - [PriorRev], [PriorRev])
+                </div>
+                <div class="flex justify-between items-center text-[10px] text-obsidian-400 font-mono">
+                  <span>DAX • Star Schema</span>
+                  <span class="text-gold-400 font-bold">Interactive</span>
+                </div>
+              </div>
+              
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">
+                Business Performance & KPI Dashboard
+              </h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed mb-5">
+                Interactive executive Power BI report with dynamic date slicers, KPI growth tracking, regional drill-downs, and multi-dimensional sales analytics.
+              </p>
+            </div>
+            
+            <div class="pt-4 border-t border-gold-500/15 flex items-center justify-between text-xs font-mono">
+              <span class="text-gold-300 bg-obsidian-900 border border-gold-500/20 px-2.5 py-1 rounded">Power BI • DAX</span>
+              <span class="text-emerald-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-circle-check text-xs"></i> Completed
+              </span>
+            </div>
+          </div>
+
+          <!-- Project 3: Excel Model -->
+          <div class="luxe-gold-card p-7 flex flex-col justify-between group rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+            <div>
+              <!-- Visual Code / Terminal Banner -->
+              <div class="h-36 rounded-2xl bg-obsidian-950 p-4 flex flex-col justify-between mb-5 border border-gold-500/20 shadow-inner group-hover:border-gold-500/40 transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <span class="text-[10px] font-mono text-gold-400 uppercase">financial_model.xlsx</span>
+                </div>
+                <div class="font-mono text-xs text-gold-200">
+                  <span class="text-obsidian-400">// Automated Lookup Matrix</span><br>
+                  =XLOOKUP(A2, Ledger!A:A, Ledger!D:D, 0, 1)
+                </div>
+                <div class="flex justify-between items-center text-[10px] text-obsidian-400 font-mono">
+                  <span>Pivot • Formulas</span>
+                  <span class="text-gold-400 font-bold">Automated</span>
+                </div>
+              </div>
+              
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">
+                Sales & Financial Operations Model
+              </h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed mb-5">
+                Advanced Excel model featuring multi-condition aggregations, nested logical formulas, automated lookups, and dynamic scenario summaries.
+              </p>
+            </div>
+            
+            <div class="pt-4 border-t border-gold-500/15 flex items-center justify-between text-xs font-mono">
+              <span class="text-gold-300 bg-obsidian-900 border border-gold-500/20 px-2.5 py-1 rounded">Excel • Modeling</span>
+              <span class="text-emerald-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-circle-check text-xs"></i> Completed
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 4. CONTACT & FOOTER (BLACK & GOLD METALLIC)              -->
+  <!-- ======================================================== -->
+  <div class="bg-black-gold-hero py-24 relative overflow-hidden border-t border-gold-500/20">
+    
+    <div class="absolute inset-0 gold-grid-overlay opacity-40 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      
+      <!-- Contact Card -->
+      <section id="contact" class="luxe-gold-card text-white p-8 sm:p-14 rounded-3xl text-center shadow-2xl border border-gold-500/30 relative overflow-hidden" data-aos="zoom-in">
+        
+        <div class="absolute -top-24 -right-24 w-60 h-60 bg-gold-500/15 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-60 h-60 bg-gold-400/15 rounded-full filter blur-3xl pointer-events-none"></div>
+
+        <div class="w-16 h-16 rounded-2xl bg-gold-500/15 border border-gold-500/40 text-gold-400 flex items-center justify-center text-2xl mx-auto mb-6 shadow-inner">
+          <i class="fa-solid fa-paper-plane animate-bounce"></i>
+        </div>
+        
+        <h2 class="text-3xl sm:text-4xl font-black text-white mb-3 tracking-tight">Let's Connect & Collaborate!</h2>
+        <p class="text-obsidian-300 max-w-lg mx-auto text-sm sm:text-base leading-relaxed mb-8">
+          I'm actively seeking opportunities to apply my data analysis, Python, and visualization skills to impactful projects and internships.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="mailto:brindha532007@gmail.com" class="btn-gold px-8 py-4 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-2.5">
+            <i class="fa-solid fa-envelope text-sm"></i>
+            <span>Email brindha532007@gmail.com</span>
+          </a>
+          <button onclick="copyEmail()" class="px-7 py-4 rounded-full bg-obsidian-900 border border-gold-500/40 text-gold-300 font-bold text-xs uppercase tracking-wider transition-all hover:bg-obsidian-800 hover:border-gold-400 hover:scale-105 flex items-center gap-2 shadow-sm">
+            <i class="fa-regular fa-copy text-gold-400"></i>
+            <span>Copy Address</span>
+          </button>
+          <a href="resume.html" target="_blank" class="px-7 py-4 rounded-full bg-obsidian-900 border border-gold-500/40 text-gold-300 font-bold text-xs uppercase tracking-wider transition-all hover:bg-obsidian-800 hover:border-gold-400 hover:scale-105 flex items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-file-pdf text-gold-400"></i>
+            <span>ATS Resume</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-obsidian-950 py-10 text-center text-xs text-obsidian-400 border-t border-gold-500/20 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2 font-mono">
+        <div class="w-6 h-6 rounded-md bg-gradient-to-br from-gold-400 to-gold-600 text-black font-bold flex items-center justify-center text-xs">B</div>
+        <span>© 2026 Brindha . S • Built for Data Science & Innovation</span>
+      </div>
+      <div class="flex items-center gap-6 text-obsidian-400">
+        <a href="mailto:brindha532007@gmail.com" class="hover:text-gold-400 transition-colors flex items-center gap-1.5" title="Email">
+          <i class="fa-solid fa-envelope"></i> Email
+        </a>
+        <a href="https://github.com/brindha532007-create" target="_blank" class="hover:text-gold-400 transition-colors flex items-center gap-1.5" title="GitHub">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <a href="resume.html" class="hover:text-gold-400 transition-colors font-mono font-semibold flex items-center gap-1.5">
+          <i class="fa-solid fa-file-lines"></i> resume.html
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 left-6 z-40 w-11 h-11 rounded-full bg-obsidian-900 text-gold-400 border border-gold-500/40 shadow-xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 hover:border-gold-400" title="Back to Top">
+    <i class="fa-solid fa-arrow-up text-sm"></i>
+  </button>
+
+  <!-- Interactive Week Detail Modal -->
+  <div id="week-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 p-4">
+    <div class="bg-obsidian-900 border border-gold-500/40 rounded-3xl max-w-xl w-full p-6 sm:p-8 text-white relative shadow-2xl transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto">
+      <button onclick="closeWeekModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-obsidian-800 text-obsidian-300 hover:text-gold-400 flex items-center justify-center transition-colors border border-gold-500/20">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span id="modal-phase" class="px-3 py-1 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 text-black font-bold font-mono text-xs">PHASE 01</span>
+        <span id="modal-tag" class="text-xs font-mono text-gold-400 font-semibold">Sprint Story</span>
+      </div>
+
+      <h3 id="modal-title" class="text-2xl font-bold text-white mb-3">Week 00 // Innovation Programme</h3>
+      <div id="modal-desc" class="text-obsidian-300 text-sm leading-relaxed mb-6 space-y-3 font-normal">
+        Detailed breakdown and problem statement notes for this fellowship week.
+      </div>
+
+      <div id="modal-highlights" class="mb-6 hidden">
+        <p class="text-xs font-mono font-bold text-gold-400 uppercase tracking-wider mb-2.5">Key Activities & Highlights:</p>
+        <div id="modal-highlights-list" class="space-y-2 text-xs font-sans text-obsidian-200"></div>
+      </div>
+
+      <div class="bg-obsidian-950 rounded-2xl p-4 border border-gold-500/20 mb-6 space-y-2 text-xs font-mono text-obsidian-300">
+        <div class="flex justify-between"><span class="text-obsidian-400">Programme:</span><span class="text-white font-bold">PRICE ProtoSem 20-Week</span></div>
+        <div class="flex justify-between"><span class="text-obsidian-400">Milestone Status:</span><span id="modal-focus" class="text-gold-400 font-bold">Field Notes in Progress</span></div>
+        <div class="flex justify-between"><span class="text-obsidian-400">Core Discipline:</span><span id="modal-discipline" class="text-white">AI, Analytics & Prototyping</span></div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+        <a id="modal-page-link" href="week-0.html" class="hidden text-xs font-mono font-bold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 order-2 sm:order-1 underline decoration-gold-500/40 underline-offset-4">
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          <span>Open Dedicated Page (week-0.html)</span>
+        </a>
+        <button onclick="closeWeekModal()" class="btn-gold px-6 py-2.5 rounded-full text-black font-bold text-xs uppercase tracking-wider order-1 sm:order-2 ml-auto">
+          Got It
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      once: true,
+      duration: 800,
+      offset: 50,
+      easing: 'ease-out-cubic'
+    });
+
+    // ==========================================
+    // 1. SCROLL PROGRESS & BACK TO TOP & SPOTLIGHT
+    // ==========================================
+    const progressBar = document.getElementById('scroll-progress');
+    const backToTopBtn = document.getElementById('back-to-top');
+    const spotlight = document.getElementById('spotlight');
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      
+      if (progressBar) progressBar.style.width = scrolled + '%';
+      
+      // Back to top button visibility
+      if (backToTopBtn) {
+        if (winScroll > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+          backToTopBtn.classList.add('opacity-100');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+          backToTopBtn.classList.remove('opacity-100');
+        }
+      }
+
+      // Header shadow on scroll
+      if (header) {
+        if (winScroll > 40) {
+          header.classList.add('shadow-xl', 'bg-[#0f1015]/95', 'border-gold-500/30');
+        } else {
+          header.classList.remove('shadow-xl', 'bg-[#0f1015]/95', 'border-gold-500/30');
+        }
+      }
+    });
+
+    // Smooth Cursor spotlight with gold aura
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let spotX = mouseX;
+    let spotY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateSpotlight() {
+      if (spotlight) {
+        spotX += (mouseX - spotX) * 0.12;
+        spotY += (mouseY - spotY) * 0.12;
+        spotlight.style.left = spotX + 'px';
+        spotlight.style.top = spotY + 'px';
+      }
+      requestAnimationFrame(animateSpotlight);
+    }
+    animateSpotlight();
+
+    // ==========================================
+    // 2. DYNAMIC TYPEWRITER EFFECT
+    // ==========================================
+    const words = [
+      "Data Science & EDA",
+      "Power BI Dashboards",
+      "Python Analytics",
+      "PRICE ProtoSem Innovation",
+      "Excel Financial Modeling"
+    ];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterElement = document.getElementById('typewriter-text');
+
+    function typeEffect() {
+      if (!typewriterElement) return;
+      const currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 400;
+      }
+
+      setTimeout(typeEffect, typeSpeed);
+    }
+
+    typeEffect();
+
+    // ==========================================
+    // 3. ANIMATED NUMBER COUNTERS
+    // ==========================================
+    const counters = document.querySelectorAll('.counter');
+    let countersStarted = false;
+
+    function runCounters() {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 50;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(runCounters, 30);
+        } else {
+          counter.innerText = target;
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          runCounters();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
+
+    // ==========================================
+    // 4. GOLD INTERACTIVE PARTICLES & DATA STREAMS
+    // ==========================================
+    const canvas = document.getElementById('hero-particle-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let particlesArray = [];
+      let symbolsArray = [];
+      let ripples = [];
+      let mouse = { x: null, y: null, radius: 130 };
+
+      function resizeCanvas() {
+        if (!canvas.parentElement) return;
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      window.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+        if (clickX >= 0 && clickX <= canvas.width && clickY >= 0 && clickY <= canvas.height) {
+          ripples.push({ x: clickX, y: clickY, radius: 2, maxRadius: 90, opacity: 0.7 });
+        }
+      });
+
+      const glyphList = ['01', '10', 'Σ', 'μ', 'σ', 'λ', 'y=f(x)', '{}', '[]', 'Δ', 'AI', 'DAX', 'Py'];
+
+      class DataSymbol {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.text = glyphList[Math.floor(Math.random() * glyphList.length)];
+          this.size = Math.random() * 6 + 10;
+          this.speedY = (Math.random() * 0.4 + 0.15) * -1;
+          this.speedX = (Math.random() - 0.5) * 0.2;
+          this.opacity = Math.random() * 0.4 + 0.15;
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          if (this.y < -20) {
+            this.y = canvas.height + 20;
+            this.x = Math.random() * canvas.width;
+          }
+        }
+        draw() {
+          ctx.font = `${this.size}px 'JetBrains Mono', monospace`;
+          ctx.fillStyle = `rgba(238, 186, 43, ${this.opacity})`;
+          ctx.fillText(this.text, this.x, this.y);
+        }
+      }
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2.5 + 1;
+          this.speedX = (Math.random() - 0.5) * 0.7;
+          this.speedY = (Math.random() - 0.5) * 0.7;
+          this.opacity = Math.random() * 0.6 + 0.25;
+          this.isHub = Math.random() > 0.88;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+          if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+          if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+
+          if (mouse.x != null && mouse.y != null) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              this.x -= (dx / dist) * force * 3;
+              this.y -= (dy / dist) * force * 3;
+            }
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.isHub ? this.size * 2 : this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.isHub ? '#f8d759' : `rgba(238, 186, 43, ${this.opacity})`;
+          ctx.fill();
+
+          if (this.isHub) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size * 3.5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(238, 186, 43, 0.12)';
+            ctx.fill();
+          }
+        }
+      }
+
+      function initParticles() {
+        particlesArray = [];
+        symbolsArray = [];
+        const numParticles = Math.min(Math.floor((canvas.width * canvas.height) / 14000), 55);
+        for (let i = 0; i < numParticles; i++) {
+          particlesArray.push(new Particle());
+        }
+        for (let i = 0; i < 14; i++) {
+          symbolsArray.push(new DataSymbol());
+        }
+      }
+      initParticles();
+      window.addEventListener('resize', initParticles);
+
+      function drawRipples() {
+        for (let i = 0; i < ripples.length; i++) {
+          const r = ripples[i];
+          r.radius += 2.5;
+          r.opacity -= 0.02;
+
+          if (r.opacity <= 0 || r.radius >= r.maxRadius) {
+            ripples.splice(i, 1);
+            i--;
+            continue;
+          }
+
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(238, 186, 43, ${r.opacity})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+      }
+
+      function connectParticles() {
+        const maxDist = 110;
+        for (let a = 0; a < particlesArray.length; a++) {
+          for (let b = a + 1; b < particlesArray.length; b++) {
+            const dx = particlesArray[a].x - particlesArray[b].x;
+            const dy = particlesArray[a].y - particlesArray[b].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < maxDist) {
+              const alpha = (1 - dist / maxDist) * 0.22;
+              ctx.strokeStyle = `rgba(238, 186, 43, ${alpha})`;
+              ctx.lineWidth = particlesArray[a].isHub || particlesArray[b].isHub ? 1.4 : 0.8;
+              ctx.beginPath();
+              ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+              ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        symbolsArray.forEach(sym => {
+          sym.update();
+          sym.draw();
+        });
+
+        particlesArray.forEach(p => {
+          p.update();
+          p.draw();
+        });
+
+        connectParticles();
+        drawRipples();
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+    }
+
+    // ==========================================
+    // 5. PROTOSEM 20-WEEK ARCHIVE DATA & RENDERING
+    // ==========================================
+    const protoSemWeeks = [
+      {
+        week: 0,
+        weekFormatted: 'WEEK 0',
+        title: 'Week 0 // Orientation & Team Foundations',
+        phase: 1,
+        phaseLabel: 'PHASE 01',
+        slug: 'week-0',
+        status: 'completed',
+        statusText: 'ORIENTATION & INAUGURATION',
+        pageUrl: 'week-0.html',
+        summaryHtml: `
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian-950 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-sparkles text-gold-400"></i>
+              <span>Week 0 Content</span>
+            </div>
+            
+            <p>
+              Week 0 of <strong>PRICE Protosem</strong> was all about getting started, connecting with our peers, and building a strong foundation for the journey ahead. We participated in the inauguration ceremony, team introductions, personality tests, storytelling, and the <strong>Marshmallow & Spaghetti challenge</strong>.
+            </p>
+
+            <p>
+              These activities helped us understand our teammates’ strengths, personalities, creativity, communication, and teamwork, while bringing together students from diverse academic backgrounds.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-sm sm:text-base flex items-center gap-2.5">
+              <span>✨</span>
+              <span>A great beginning to an exciting 20-week journey of learning, collaboration, and solving real-world retail challenges!</span>
+            </div>
+          </div>
+        `,
+        highlights: [
+          { icon: 'fa-landmark', title: 'Inauguration Ceremony', desc: 'Cohort kickoff into the 20-week fellowship journey.' },
+          { icon: 'fa-users', title: 'Team Introductions & Personality Tests', desc: 'Mapping peer strengths, personalities, and teamwork synergy.' },
+          { icon: 'fa-book-open', title: 'Creative Storytelling', desc: 'Communication, articulating ideas, and cross-disciplinary empathy.' },
+          { icon: 'fa-shapes', title: 'Marshmallow & Spaghetti Challenge', desc: 'Hands-on rapid prototyping under pressure and time constraints.' }
+        ],
+        tags: ['Orientation', 'Inauguration', 'Team Building', 'Personality Tests', 'Storytelling', 'Spaghetti Challenge'],
+        discipline: 'Team Dynamics & Rapid Prototyping'
+      }
+    ];
+
+    for (let i = 1; i <= 20; i++) {
+      const phaseNum = Math.ceil(i / 5);
+      const weekFormatted = i < 10 ? '0' + i : '' + i;
+      protoSemWeeks.push({
+        week: i,
+        weekFormatted: 'WEEK ' + weekFormatted,
+        title: `Week ${weekFormatted} // Innovation Programme`,
+        phase: phaseNum,
+        phaseLabel: 'PHASE 0' + phaseNum,
+        slug: 'week-' + weekFormatted,
+        status: 'placeholder',
+        statusText: 'FIELD NOTES IN PROGRESS',
+        summaryHtml: `<p>Field notes, sprint insights, and problem-solving reflections for <strong>WEEK ${weekFormatted}</strong> are currently in progress and will be published as the fellowship unfolds.</p>`,
+        highlights: [],
+        tags: ['Sprint', `Phase 0${phaseNum}`],
+        discipline: 'Retail AI, IoT & Rapid Prototyping'
+      });
+    }
+
+    const cardsContainer = document.getElementById('protosem-cards-grid');
+    let currentFilterPhase = 'all';
+    let currentSearchTerm = '';
+
+    function renderProtoSemCards() {
+      if (!cardsContainer) return;
+      cardsContainer.innerHTML = '';
+
+      let filtered = protoSemWeeks;
+
+      if (currentFilterPhase !== 'all') {
+        filtered = filtered.filter(w => w.phase.toString() === currentFilterPhase.toString());
+      }
+
+      if (currentSearchTerm.trim() !== '') {
+        const query = currentSearchTerm.toLowerCase();
+        filtered = filtered.filter(w => 
+          w.weekFormatted.toLowerCase().includes(query) || 
+          w.phaseLabel.toLowerCase().includes(query) ||
+          w.statusText.toLowerCase().includes(query) ||
+          (w.title && w.title.toLowerCase().includes(query)) ||
+          (w.tags && w.tags.some(t => t.toLowerCase().includes(query))) ||
+          (w.summaryHtml && w.summaryHtml.toLowerCase().includes(query))
+        );
+      }
+
+      if (filtered.length === 0) {
+        cardsContainer.innerHTML = `
+          <div class="col-span-full py-12 text-center text-obsidian-400 font-mono text-sm">
+            <i class="fa-solid fa-search text-2xl mb-2 block text-gold-400"></i>
+            No weeks matching "${currentSearchTerm}". Try another search term or reset filters!
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'week-card p-5 flex flex-col justify-between group cursor-pointer';
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-label', item.weekFormatted + ' - ' + item.phaseLabel);
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2 text-xs font-mono text-obsidian-400">
+              <span class="px-2.5 py-0.5 rounded-full bg-gold-500/15 text-gold-300 border border-gold-500/30 font-bold">${item.phaseLabel}</span>
+              <span class="text-[11px] text-obsidian-400">Chapter #${item.week}</span>
+            </div>
+
+            <div class="flex items-baseline justify-between mb-1">
+              <h4 class="week-title text-base font-mono font-bold text-white transition-colors">${item.weekFormatted}</h4>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-obsidian-400 group-hover:text-gold-400 transition-colors"></i>
+            </div>
+
+            <p class="text-xs text-obsidian-400 font-mono tracking-wide uppercase flex items-center gap-1.5 pt-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+              <span>${item.statusText}</span>
+            </p>
+          </div>
+
+          <div class="pt-3 mt-3 border-t border-gold-500/15 flex items-center justify-between text-[11px] font-mono text-obsidian-400">
+            <span>Chapter ${item.week} of 20</span>
+            <span class="group-hover:text-gold-400 font-bold transition-colors">View Story →</span>
+          </div>
+        `;
+
+        card.addEventListener('click', () => {
+          openWeekModal(item);
+        });
+
+        cardsContainer.appendChild(card);
+      });
+    }
+
+    function filterProtoSem(phase, btnElement) {
+      currentFilterPhase = phase;
+      document.querySelectorAll('.phase-btn').forEach(btn => {
+        btn.className = 'phase-btn px-4 py-2 rounded-full text-xs font-semibold bg-obsidian-900 border border-gold-500/25 hover:border-gold-400 text-obsidian-200 transition-all';
+      });
+
+      if (btnElement) {
+        btnElement.className = 'phase-btn active px-4 py-2 rounded-full text-xs font-extrabold bg-gradient-to-r from-gold-400 to-gold-600 text-black shadow-sm';
+      }
+
+      renderProtoSemCards();
+    }
+
+    function searchProtoSem(val) {
+      currentSearchTerm = val;
+      renderProtoSemCards();
+    }
+
+    // Modal Details Logic
+    function openWeekModal(item) {
+      const modal = document.getElementById('week-modal');
+      const isCompleted = item.status === 'completed';
+
+      document.getElementById('modal-phase').innerText = `${item.phaseLabel} // ${item.weekFormatted}`;
+      document.getElementById('modal-tag').innerText = isCompleted ? '✨ Official Sprint Story' : 'Sprint Story';
+      document.getElementById('modal-title').innerText = `${item.weekFormatted}: ${item.title}`;
+      
+      const descEl = document.getElementById('modal-desc');
+      descEl.innerHTML = item.summaryHtml || `<p>${item.summary}</p>`;
+
+      const highlightsContainer = document.getElementById('modal-highlights');
+      const highlightsList = document.getElementById('modal-highlights-list');
+      if (item.highlights && item.highlights.length > 0) {
+        highlightsContainer.classList.remove('hidden');
+        highlightsList.innerHTML = item.highlights.map(h => `
+          <div class="p-2.5 rounded-xl bg-obsidian-950/80 border border-gold-500/20 flex items-start gap-2.5">
+            <div class="w-6 h-6 rounded-lg bg-gold-500/15 text-gold-400 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">
+              <i class="fa-solid ${h.icon}"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white text-xs">${h.title}</p>
+              <p class="text-obsidian-300 text-[11px] leading-tight mt-0.5">${h.desc}</p>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        highlightsContainer.classList.add('hidden');
+        highlightsList.innerHTML = '';
+      }
+
+      const pageLink = document.getElementById('modal-page-link');
+      if (item.pageUrl && pageLink) {
+        pageLink.href = item.pageUrl;
+        pageLink.classList.remove('hidden');
+      } else if (pageLink) {
+        pageLink.classList.add('hidden');
+      }
+
+      document.getElementById('modal-focus').innerText = isCompleted ? 'Completed Milestone ✨' : 'Field Notes in Progress';
+      document.getElementById('modal-discipline').innerText = item.discipline || 'AI, Analytics & Prototyping';
+      
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      modal.querySelector('div').classList.remove('scale-95');
+      modal.querySelector('div').classList.add('scale-100');
+    }
+
+    function closeWeekModal() {
+      const modal = document.getElementById('week-modal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100');
+      modal.querySelector('div').classList.add('scale-95');
+      modal.querySelector('div').classList.remove('scale-100');
+    }
+
+    // ==========================================
+    // 6. COPY EMAIL & TOAST NOTIFICATION
+    // ==========================================
+    let toastTimeout;
+    function showProtoSemToast(msg) {
+      const toast = document.getElementById('protosem-toast');
+      const toastMsg = document.getElementById('toast-message');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+
+    function copyEmail() {
+      const email = 'brindha532007@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        showProtoSemToast(`📋 Copied "${email}" to clipboard!`);
+      }).catch(() => {
+        showProtoSemToast(`📧 Email: ${email}`);
+      });
+    }
+
+    // Initial render
+    renderProtoSemCards();
+  </script>
+</body>
+</html>
