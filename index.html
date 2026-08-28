@@ -1590,10 +1590,50 @@
         ],
         tags: ['Orientation', 'Inauguration', 'Team Building', 'Personality Tests', 'Storytelling', 'Spaghetti Challenge'],
         discipline: 'Team Dynamics & Rapid Prototyping'
+      },
+      {
+        week: 1,
+        weekFormatted: 'WEEK 01',
+        title: 'Week 1 // Design Thinking & Retail Ecosystem',
+        phase: 1,
+        phaseLabel: 'PHASE 01',
+        slug: 'week-1',
+        status: 'completed',
+        statusText: 'DESIGN THINKING & RETAIL SECTORS',
+        pageUrl: 'week-1.html',
+        summaryHtml: `
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian-950 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-sparkles text-gold-400"></i>
+              <span>Week 1 Milestones & Research</span>
+            </div>
+            
+            <p>
+              Week 1 focused on understanding the basics of <strong>Design Thinking</strong> and exploring the retail industry through creative and analytical activities.
+            </p>
+
+            <p>
+              Overall, Week 1 helped us strengthen our creative thinking, research, teamwork, and presentation skills while gaining a deeper understanding of the retail ecosystem.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-sm sm:text-base flex items-center gap-2.5">
+              <span>✨</span>
+              <span>Strengthened creative problem solving, user empathy, SWOT analysis, and sector value chain mapping!</span>
+            </div>
+          </div>
+        `,
+        highlights: [
+          { icon: 'fa-brain', title: 'Design Thinking Fundamentals', desc: 'Learned core frameworks for user empathy, problem definition, and iterative ideation.' },
+          { icon: 'fa-circle-dot', title: '30 Circles Activity', desc: 'Participated in rapid-fire exercises to encourage creativity and innovative thinking.' },
+          { icon: 'fa-chart-line', title: 'Retail Sector Evolution', desc: 'Created and presented an informative poster on the historical evolution of a chosen retail sector.' },
+          { icon: 'fa-magnifying-glass-chart', title: 'Value Chain & SWOT Analysis', desc: 'Researched the sector’s value chain, major market players, development drivers, and presented findings.' }
+        ],
+        tags: ['Design Thinking', '30 Circles Activity', 'Retail Sector Evolution', 'Value Chain', 'SWOT Analysis', 'Market Research'],
+        discipline: 'Design Thinking & Market Intelligence'
       }
     ];
 
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 2; i <= 20; i++) {
       const phaseNum = Math.ceil(i / 5);
       const weekFormatted = i < 10 ? '0' + i : '' + i;
       protoSemWeeks.push({
@@ -1739,6 +1779,8 @@
       const pageLink = document.getElementById('modal-page-link');
       if (item.pageUrl && pageLink) {
         pageLink.href = item.pageUrl;
+        const pageSpan = pageLink.querySelector('span');
+        if (pageSpan) pageSpan.innerText = `Open Dedicated Page (${item.pageUrl})`;
         pageLink.classList.remove('hidden');
       } else if (pageLink) {
         pageLink.classList.add('hidden');
