@@ -1636,20 +1636,58 @@
     for (let i = 2; i <= 20; i++) {
       const phaseNum = Math.ceil(i / 5);
       const weekFormatted = i < 10 ? '0' + i : '' + i;
-      protoSemWeeks.push({
-        week: i,
-        weekFormatted: 'WEEK ' + weekFormatted,
-        title: `Week ${weekFormatted} // Innovation Programme`,
-        phase: phaseNum,
-        phaseLabel: 'PHASE 0' + phaseNum,
-        slug: 'week-' + weekFormatted,
-        status: 'placeholder',
-        statusText: 'FIELD NOTES IN PROGRESS',
-        summaryHtml: `<p>Field notes, sprint insights, and problem-solving reflections for <strong>WEEK ${weekFormatted}</strong> are currently in progress and will be published as the fellowship unfolds.</p>`,
-        highlights: [],
-        tags: ['Sprint', `Phase 0${phaseNum}`],
-        discipline: 'Retail AI, IoT & Rapid Prototyping'
-      });
+      if (i === 6) {
+        protoSemWeeks.push({
+          week: 6,
+          weekFormatted: 'WEEK 06',
+          title: 'Week 06 // Digital Fabrication',
+          phase: 2,
+          phaseLabel: 'PHASE 02',
+          slug: 'week-06',
+          status: 'completed',
+          statusText: 'DIGITAL FABRICATION',
+          pageUrl: 'week-06.html',
+          summaryHtml: `
+            <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian-950 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-sparkles text-gold-400"></i>
+                <span>Week 6 Digital Fabrication</span>
+              </div>
+              
+              <p>
+                This week focused on hands-on digital fabrication and physical prototyping. I explored the process of preparing digital designs for fabrication, creating a physical model using clay, and producing a 3D printed object. These activities helped me understand how a digital concept can be transformed into a physical prototype.
+              </p>
+
+              <div class="p-4 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-sm sm:text-base flex items-center gap-2.5">
+                <span>✨</span>
+                <span>Subtractive Laser Cutting (RDWorks V8) → Tactile Clay Modelling → Additive 3D Printing!</span>
+              </div>
+            </div>
+          `,
+          highlights: [
+            { icon: 'fa-bolt', title: 'Laser Cutting Using RDWorks V8', desc: 'Vector CAM layout, laser parameter configuration, and acrylic engraving at FabLab Coimbatore.' },
+            { icon: 'fa-hands', title: 'Clay Modelling', desc: 'Hands-on tactile physical shape development and miniature vegetable basket prototype.' },
+            { icon: 'fa-cube', title: '3D Printing', desc: 'Digital 3D CAD preparation, slicing layer generation, and additive manufacturing execution.' }
+          ],
+          tags: ['Digital Fabrication', 'Laser Cutting', 'RDWorks V8', 'Clay Modelling', '3D Printing', 'Prototyping'],
+          discipline: 'Digital Fabrication & Rapid Prototyping'
+        });
+      } else {
+        protoSemWeeks.push({
+          week: i,
+          weekFormatted: 'WEEK ' + weekFormatted,
+          title: `Week ${weekFormatted} // Innovation Programme`,
+          phase: phaseNum,
+          phaseLabel: 'PHASE 0' + phaseNum,
+          slug: 'week-' + weekFormatted,
+          status: 'placeholder',
+          statusText: 'FIELD NOTES IN PROGRESS',
+          summaryHtml: `<p>Field notes, sprint insights, and problem-solving reflections for <strong>WEEK ${weekFormatted}</strong> are currently in progress and will be published as the fellowship unfolds.</p>`,
+          highlights: [],
+          tags: ['Sprint', `Phase 0${phaseNum}`],
+          discipline: 'Retail AI, IoT & Rapid Prototyping'
+        });
+      }
     }
 
     const cardsContainer = document.getElementById('protosem-cards-grid');
@@ -1719,7 +1757,11 @@
         `;
 
         card.addEventListener('click', () => {
-          openWeekModal(item);
+          if (item.pageUrl) {
+            window.location.href = item.pageUrl;
+          } else {
+            openWeekModal(item);
+          }
         });
 
         cardsContainer.appendChild(card);

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 06 – Digital Fabrication | PRICE ProtoSem | Brindha . S</title>
+  <meta name="description" content="Week 06 – Digital Fabrication: Laser Cutting, Clay Modelling and 3D Printing. PRICE ProtoSem Innovation Fellowship documentation.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: '#fdfbf0',
+              100: '#fbf5d9',
+              200: '#f6e7a6',
+              300: '#f0d56b',
+              400: '#f8d759',
+              500: '#eeba2b',
+              600: '#d39b3d',
+              700: '#b76d28',
+              800: '#8c4e1a',
+              900: '#5a2e0e',
+            },
+            obsidian: {
+              50: '#f4f5f7',
+              100: '#e4e6ec',
+              200: '#c5c9d6',
+              300: '#9fa6bb',
+              400: '#757e9b',
+              500: '#57607e',
+              600: '#424963',
+              700: '#2b3042',
+              800: '#1d1f26',
+              900: '#0f1015',
+              950: '#08090c',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation CDN -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f1015;
+      color: #f4f5f7;
+      overflow-x: hidden;
+    }
+
+    .bg-black-gold-hero {
+      background-color: #0f1015;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(238, 186, 43, 0.16) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(248, 215, 89, 0.12) 0px, transparent 55%),
+        radial-gradient(at 50% 60%, rgba(183, 109, 40, 0.12) 0px, transparent 60%),
+        linear-gradient(180deg, #0a0b0e 0%, #0f1015 50%, #14161e 100%);
+    }
+
+    .gold-grid-overlay {
+      background-size: 64px 64px;
+      background-image: 
+        linear-gradient(to right, rgba(238, 186, 43, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(238, 186, 43, 0.05) 1px, transparent 1px);
+    }
+
+    .luxe-gold-card {
+      background: rgba(20, 22, 30, 0.8);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(238, 186, 43, 0.22);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .luxe-gold-card:hover {
+      border-color: rgba(238, 186, 43, 0.6);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(238, 186, 43, 0.2);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 50%, #d39b3d 100%);
+      color: #0f1015;
+      box-shadow: 0 10px 25px -5px rgba(238, 186, 43, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 32px -5px rgba(238, 186, 43, 0.5);
+    }
+
+    /* Process Photo Frame */
+    .process-photo-frame {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(238, 186, 43, 0.3);
+      background: rgba(13, 14, 20, 0.95);
+      overflow: hidden;
+      box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.3s ease;
+    }
+    .process-photo-frame:hover {
+      border-color: rgba(238, 186, 43, 0.75);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.95), 0 0 24px rgba(238, 186, 43, 0.22);
+    }
+
+    /* Numbered Process Step */
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 100%);
+      color: #0f1015;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px rgba(238, 186, 43, 0.35);
+      flex-shrink: 0;
+    }
+
+    .step-item {
+      position: relative;
+      padding-left: 3.5rem;
+      padding-bottom: 2.5rem;
+    }
+    .step-item:last-child {
+      padding-bottom: 0;
+    }
+    .step-item::before {
+      content: '';
+      position: absolute;
+      left: 1.1rem;
+      top: 2.25rem;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(238, 186, 43, 0.5), rgba(238, 186, 43, 0.05));
+    }
+    .step-item:last-child::before {
+      display: none;
+    }
+    .step-item .step-badge-pos {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- Top Glass Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0f1015]/90 backdrop-blur-lg border-b border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-obsidian-950 font-mono font-black text-lg flex items-center justify-center shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+          B
+        </div>
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-wider text-white uppercase flex items-center gap-1.5">
+            PORTFOLIO
+            <span class="inline-block w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+          </span>
+          <span class="text-[11px] text-gold-400 font-mono font-medium">PRICE ProtoSem • Week 06</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <a href="index.html#protosem" class="px-4 py-2 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Archive</span>
+        </a>
+        <a href="resume.html" target="_blank" class="btn-gold px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider hidden sm:flex items-center gap-2">
+          <i class="fa-solid fa-file-lines text-xs"></i>
+          <span>Resume</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-28 pb-20">
+    
+    <!-- Hero Header Banner -->
+    <div class="bg-black-gold-hero py-16 border-b border-gold-500/20 relative overflow-hidden">
+      <div class="absolute inset-0 gold-grid-overlay opacity-60 pointer-events-none"></div>
+      
+      <div class="max-w-6xl mx-auto px-6 relative z-10" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+          <i class="fa-solid fa-sparkles text-xs"></i>
+          <span>PHASE 02 // CHAPTER #06 // SPRINT STORY</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-2">
+          Week 06 – <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600">Digital Fabrication</span>
+        </h1>
+        
+        <p class="text-gold-300 font-mono text-lg sm:text-xl font-bold tracking-wide mb-6">
+          Laser Cutting, Clay Modelling and 3D Printing
+        </p>
+
+        <div class="luxe-gold-card p-6 sm:p-8 rounded-2xl border-l-4 border-gold-500 max-w-4xl">
+          <p class="text-white text-base sm:text-lg leading-relaxed font-normal">
+            This week focused on hands-on digital fabrication and physical prototyping. I explored the process of preparing digital designs for fabrication, creating a physical model using clay, and producing a 3D printed object. These activities helped me understand how a digital concept can be transformed into a physical prototype.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 mt-14 space-y-16">
+
+      <!-- ========================================== -->
+      <!-- SECTION 01: LASER CUTTING USING RDWORKS V8 -->
+      <!-- ========================================== -->
+      <section id="laser-cutting" class="luxe-gold-card p-8 sm:p-12 rounded-3xl" data-aos="fade-up">
+        
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+          <div class="w-12 h-12 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Section 01</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Laser Cutting Using RDWorks V8</h2>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-obsidian-950 border border-gold-500/20 mb-10 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+          <p>
+            RDWorks V8 was used to prepare the design for the laser cutting process. The design was prepared digitally, checked for dimensions and positioning, and then prepared for fabrication using the laser cutting workflow.
+          </p>
+        </div>
+
+        <!-- Steps -->
+        <div class="space-y-10">
+
+          <!-- Step 01 – Design Preparation -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">1</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 01 – Design Preparation</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                The design was first prepared digitally before moving to the laser fabrication stage. Vector contours and raster artwork were verified for scale and closed geometry.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/laser-design-rdworks.jpg" 
+                  onerror="this.src='images/week6/laser-design-rdworks.jpg'" 
+                  alt="Initial digital design prepared for laser fabrication" 
+                  class="w-full h-auto max-h-[460px] object-contain bg-black mx-auto"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Initial digital design prepared for laser fabrication."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 02 – Working with RDWorks V8 -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">2</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 02 – Working with RDWorks V8</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                The design was opened/prepared in RDWorks V8 before sending it for laser cutting. Layer assignments, speed, and laser power parameters were configured to control the cut depth and engraving lines.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/laser-cutting-design-output.jpg" 
+                  onerror="this.src='images/week6/laser-cutting-design-output.jpg'" 
+                  alt="Design prepared in RDWorks V8 for the laser cutting process" 
+                  class="w-full h-auto max-h-[460px] object-contain bg-black mx-auto"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Design prepared in RDWorks V8 for the laser cutting process."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 03 – Design Setup -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">3</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 03 – Design Setup</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                The preparation of the design included checking its dimensions, position within the coordinate workspace, origin zeroing, and confirming all required cutting and engraving parameters.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 04 – Laser Cutting Process -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">4</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 04 – Laser Cutting Process</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                The prepared design was sent to the laser cutting machine and the fabrication process was carried out at FabLab Coimbatore under proper ventilation and supervision.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/laser-cutting-process.jpg" 
+                  onerror="this.src='images/week6/laser-cutting-process.jpg'" 
+                  alt="Laser cutting process in progress" 
+                  class="w-full h-auto max-h-[480px] object-contain bg-black mx-auto"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Laser cutting process in progress."
+                  </p>
+                  <p class="text-[11px] text-obsidian-400 mt-0.5">
+                    FabLab Coimbatore • FORGE Laser Cutter Setup
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 05 – Final Laser-Cut Output -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">5</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 05 – Final Laser-Cut Output</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                The completed acrylic workpiece was removed from the machine bed and inspected for dimensional precision, crisp edge quality, and clean surface engraving.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/laser-cutting-design-output.jpg" 
+                  onerror="this.src='images/week6/laser-cutting-design-output.jpg'" 
+                  alt="Final output obtained after the laser cutting process" 
+                  class="w-full h-auto max-h-[460px] object-contain bg-black mx-auto"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Final output obtained after the laser cutting process."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 02: CLAY MODELLING                 -->
+      <!-- ========================================== -->
+      <section id="clay-modelling" class="luxe-gold-card p-8 sm:p-12 rounded-3xl" data-aos="fade-up">
+        
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+          <div class="w-12 h-12 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-hands"></i>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Section 02</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Clay Modelling</h2>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-obsidian-950 border border-gold-500/20 mb-10 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+          <p>
+            Clay modelling was carried out as a hands-on modelling activity to understand how an idea can be developed into a physical form. The model was gradually shaped, refined and detailed using clay.
+          </p>
+        </div>
+
+        <!-- Steps -->
+        <div class="space-y-10">
+
+          <!-- Step 01 – Preparing the Clay -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">1</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 01 – Preparing the Clay</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                Conditioned and kneaded the clay material to achieve consistent plasticity and set up the sculpting tools.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/clay-modelling-process.jpg" 
+                  onerror="this.src='images/week6/clay-modelling-process.jpg'" 
+                  alt="Preparing the clay" 
+                  class="w-full h-auto max-h-[460px] object-cover object-center bg-black"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Preparing the clay material and organizing sculpting tools."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 02 – Creating the Initial Form -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">2</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 02 – Creating the Initial Form</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                Formed the basic foundational structure of the basket bowl, setting up the volumetric mass and primary scale proportions.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/clay-modelling-process.jpg" 
+                  onerror="this.src='images/week6/clay-modelling-process.jpg'" 
+                  alt="Creating the initial form" 
+                  class="w-full h-auto max-h-[460px] object-cover object-center bg-black"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Creating the initial foundational form and establishing proportions."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 03 – Developing the Model -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">3</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 03 – Developing the Model</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                The shape was gradually developed through hands-on modelling, refining curves, side contours, and balancing individual components.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/clay-modelling-process.jpg" 
+                  onerror="this.src='images/week6/clay-modelling-process.jpg'" 
+                  alt="Developing the model" 
+                  class="w-full h-auto max-h-[460px] object-cover object-center bg-black"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Developing the shape through hands-on modelling."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 04 – Detailing and Refinement -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">4</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 04 – Detailing and Refinement</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                The model was refined and required details were added, including miniature peas inside an open pod, ribbed carrots, tomato calyx details, and textured cauliflower florets.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/clay-modelling-final.jpg" 
+                  onerror="this.src='images/week6/clay-modelling-final.jpg'" 
+                  alt="Detailing and refinement of clay model" 
+                  class="w-full h-auto max-h-[460px] object-cover object-center bg-black"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Adding fine details, textures, and surface refinements."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 05 – Final Clay Model -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">5</div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2">Step 05 – Final Clay Model</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed mb-6">
+                The completed clay model after shaping and refinement demonstrates clean multi-colored assembly, balanced geometry, and tactile form development.
+              </p>
+
+              <div class="process-photo-frame max-w-2xl overflow-hidden">
+                <img 
+                  src="public/images/week6/clay-modelling-final.jpg" 
+                  onerror="this.src='images/week6/clay-modelling-final.jpg'" 
+                  alt="Completed clay model after shaping and refinement" 
+                  class="w-full h-auto max-h-[460px] object-cover object-center bg-black"
+                >
+                <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+                  <p class="text-xs font-mono text-gold-300 font-semibold">
+                    "Completed clay model after shaping and refinement."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 03: 3D PRINTING                    -->
+      <!-- ========================================== -->
+      <section id="3d-printing" class="luxe-gold-card p-8 sm:p-12 rounded-3xl" data-aos="fade-up">
+        
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+          <div class="w-12 h-12 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-cube"></i>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Section 03</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">3D Printing</h2>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-obsidian-950 border border-gold-500/20 mb-10 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+          <p>
+            The 3D printing activity involved preparing a digital model and converting it into a physical object using a 3D printer. The workflow included preparing the model, preparing it for printing, setting up the printer and observing the printing process.
+          </p>
+        </div>
+
+        <!-- Steps -->
+        <div class="space-y-8">
+          
+          <!-- Step 01 – 3D Model Preparation -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">1</div>
+            <div>
+              <h3 class="text-base font-bold text-white mb-1">Step 01 – 3D Model Preparation</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed">
+                The digital 3D model was designed in CAD software with watertight (manifold) geometry, appropriate wall thicknesses, and structural stability suitable for additive fabrication.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 02 – Print Preparation -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">2</div>
+            <div>
+              <h3 class="text-base font-bold text-white mb-1">Step 02 – Print Preparation</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed">
+                Imported the 3D model into the slicing software to check dimensions, orient the geometry on the virtual build platform, evaluate support structures, and generate the sliced toolpath instructions.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 03 – 3D Printer Setup -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">3</div>
+            <div>
+              <h3 class="text-base font-bold text-white mb-1">Step 03 – 3D Printer Setup</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed">
+                Configured the 3D printer hardware by verifying bed leveling calibration, preheating the extrusion nozzle and heated bed, and feeding the printing material.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 04 – Printing Process -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">4</div>
+            <div>
+              <h3 class="text-base font-bold text-white mb-1">Step 04 – Printing Process</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed">
+                Initiated the print sequence and monitored the layer-by-layer deposition pass, ensuring consistent material extrusion, no warping, and solid first-layer adhesion.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 05 – Final 3D Printed Model -->
+          <div class="step-item">
+            <div class="step-badge-pos step-badge">5</div>
+            <div>
+              <h3 class="text-base font-bold text-white mb-1">Step 05 – Final 3D Printed Model</h3>
+              <p class="text-obsidian-300 text-sm leading-relaxed">
+                Allowed the build platform to cool to ambient temperature, safely detached the completed physical part, removed support structures, and inspected dimensional accuracy and surface fidelity.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 04: WHAT I LEARNED                 -->
+      <!-- ========================================== -->
+      <section id="reflection" class="luxe-gold-card p-8 sm:p-12 rounded-3xl border-l-4 border-gold-500" data-aos="fade-up">
+        
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+          <div class="w-12 h-12 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Section 04</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">What I Learned</h2>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-white text-base sm:text-lg leading-relaxed font-normal">
+          <p>
+            This week's activities gave me practical exposure to digital fabrication and physical prototyping. I learned how a digital design can be prepared for laser cutting, how physical forms can be developed through clay modelling, and how a digital model can be converted into a physical object through 3D printing. The activities also helped me understand the importance of accurate design preparation, dimensions and hands-on fabrication.
+          </p>
+
+          <div class="pt-4 border-t border-gold-500/15 flex flex-wrap gap-2 text-xs font-mono text-gold-300">
+            <span class="px-3.5 py-1.5 rounded-lg bg-obsidian-950 border border-gold-500/20">🎯 Accurate Design Preparation</span>
+            <span class="px-3.5 py-1.5 rounded-lg bg-obsidian-950 border border-gold-500/20">⚡ Laser Cutting Workflow</span>
+            <span class="px-3.5 py-1.5 rounded-lg bg-obsidian-950 border border-gold-500/20">🤲 Physical Clay Modelling</span>
+            <span class="px-3.5 py-1.5 rounded-lg bg-obsidian-950 border border-gold-500/20">🖨️ 3D Printing Prototyping</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 05: FINAL OUTCOME                  -->
+      <!-- ========================================== -->
+      <section id="final-outcome" class="luxe-gold-card p-8 sm:p-12 rounded-3xl" data-aos="fade-up">
+        
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+          <div class="w-12 h-12 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Section 05</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Final Outcome</h2>
+          </div>
+        </div>
+
+        <p class="text-obsidian-300 text-sm sm:text-base mb-8">
+          Week 06 provided hands-on experience in digital fabrication and physical prototyping. The activities connected digital design with real-world fabrication through laser cutting, clay modelling and 3D printing.
+        </p>
+
+        <!-- Final Photographs Gallery -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+          
+          <!-- Final Output 1: Laser Cutting Output -->
+          <div class="process-photo-frame overflow-hidden">
+            <img 
+              src="public/images/week6/laser-cutting-design-output.jpg" 
+              onerror="this.src='images/week6/laser-cutting-design-output.jpg'" 
+              alt="Final Laser-Cut Output" 
+              class="w-full h-[360px] object-contain bg-black"
+            >
+            <div class="p-5 bg-obsidian-950 border-t border-gold-500/20">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-gold-400 uppercase">Laser Cutting Output</span>
+                <span class="text-[11px] font-mono text-obsidian-400">RDWorks V8 CAM</span>
+              </div>
+              <p class="text-xs text-obsidian-200 leading-relaxed">
+                Final laser-engraved acrylic piece side-by-side with the digital vector design.
+              </p>
+            </div>
+          </div>
+
+          <!-- Final Output 2: Clay Modelling Output -->
+          <div class="process-photo-frame overflow-hidden">
+            <img 
+              src="public/images/week6/clay-modelling-final.jpg" 
+              onerror="this.src='images/week6/clay-modelling-final.jpg'" 
+              alt="Final Clay Model Output" 
+              class="w-full h-[360px] object-cover object-center bg-black"
+            >
+            <div class="p-5 bg-obsidian-950 border-t border-gold-500/20">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-gold-400 uppercase">Clay Modelling Output</span>
+                <span class="text-[11px] font-mono text-obsidian-400">Handcrafted Prototype</span>
+              </div>
+              <p class="text-xs text-obsidian-200 leading-relaxed">
+                Completed detailed clay vegetable basket model with peas in pod, carrot, tomatoes, and cauliflower.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="p-6 rounded-2xl bg-obsidian-950 border border-gold-500/25 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="index.html#protosem" class="px-5 py-2.5 rounded-full bg-obsidian-900 hover:bg-obsidian-800 text-obsidian-200 hover:text-white transition-all text-xs font-bold font-mono border border-gold-500/30 flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left text-gold-400"></i>
+            <span>All ProtoSem Weeks</span>
+          </a>
+          
+          <div class="flex items-center gap-3">
+            <a href="resume.html" target="_blank" class="px-5 py-2.5 rounded-full bg-obsidian-900 hover:bg-obsidian-800 text-gold-400 border border-gold-500/30 text-xs font-bold font-mono flex items-center gap-2">
+              <i class="fa-solid fa-file-pdf"></i>
+              <span>Resume</span>
+            </a>
+            <a href="index.html" class="btn-gold px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-house"></i>
+              <span>Home</span>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-obsidian-950 py-8 text-center text-xs text-obsidian-400 border-t border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
+      <span>© 2026 Brindha . S • PRICE ProtoSem Trainee</span>
+      <a href="index.html#protosem" class="text-gold-400 hover:underline">View All 20 Weeks</a>
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+</body>
+</html>
