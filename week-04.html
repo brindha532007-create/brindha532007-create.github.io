@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 4 – Embedded Systems, Sensors and IoT Development | PRICE ProtoSem | Brindha . S</title>
+  <meta name="description" content="Week 4 of PRICE ProtoSem: Computational hardware, Arduino Uno, microcontrollers, sensors, actuators, communication protocols (UART, I2C, SPI), MPU6050, SG90 servo, IoT, Chrome extension development, and Smart Room Model.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: '#fdfbf0',
+              100: '#fbf5d9',
+              200: '#f6e7a6',
+              300: '#f0d56b',
+              400: '#f8d759',
+              500: '#eeba2b',
+              600: '#d39b3d',
+              700: '#b76d28',
+              800: '#8c4e1a',
+              900: '#5a2e0e',
+            },
+            obsidian: {
+              50: '#f4f5f7',
+              100: '#e4e6ec',
+              200: '#c5c9d6',
+              300: '#9fa6bb',
+              400: '#757e9b',
+              500: '#57607e',
+              600: '#424963',
+              700: '#2b3042',
+              800: '#1d1f26',
+              900: '#0f1015',
+              950: '#08090c',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation CDN -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f1015;
+      color: #f4f5f7;
+      overflow-x: hidden;
+    }
+
+    .bg-black-gold-hero {
+      background-color: #0f1015;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(238, 186, 43, 0.16) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(248, 215, 89, 0.12) 0px, transparent 55%),
+        radial-gradient(at 50% 60%, rgba(183, 109, 40, 0.12) 0px, transparent 60%),
+        linear-gradient(180deg, #0a0b0e 0%, #0f1015 50%, #14161e 100%);
+    }
+
+    .gold-grid-overlay {
+      background-size: 64px 64px;
+      background-image: 
+        linear-gradient(to right, rgba(238, 186, 43, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(238, 186, 43, 0.05) 1px, transparent 1px);
+    }
+
+    .luxe-gold-card {
+      background: rgba(20, 22, 30, 0.8);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(238, 186, 43, 0.22);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .luxe-gold-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(238, 186, 43, 0.6);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(238, 186, 43, 0.2);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 50%, #d39b3d 100%);
+      color: #0f1015;
+      box-shadow: 0 10px 25px -5px rgba(238, 186, 43, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 32px -5px rgba(238, 186, 43, 0.5);
+    }
+
+    .tag-badge {
+      transition: all 0.2s ease;
+    }
+    .tag-badge:hover {
+      transform: translateY(-2px);
+      border-color: #eeba2b;
+      color: #f8d759;
+      background: rgba(238, 186, 43, 0.15);
+    }
+
+    /* Photo Frame with Gold Border & Hover Glow */
+    .photo-frame {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(238, 186, 43, 0.28);
+      background: rgba(13, 14, 20, 0.95);
+      overflow: hidden;
+      box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.35s ease;
+      cursor: pointer;
+    }
+    .photo-frame:hover {
+      border-color: rgba(238, 186, 43, 0.75);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px -10px rgba(0, 0, 0, 0.95), 0 0 24px rgba(238, 186, 43, 0.25);
+    }
+
+    /* Process Step Badge */
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.875rem;
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 100%);
+      color: #0f1015;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(238, 186, 43, 0.35);
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- Top Glass Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0f1015]/90 backdrop-blur-lg border-b border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-obsidian-950 font-mono font-black text-lg flex items-center justify-center shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+          B
+        </div>
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-wider text-white uppercase flex items-center gap-1.5">
+            PORTFOLIO
+            <span class="inline-block w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+          </span>
+          <span class="text-[11px] text-gold-400 font-mono font-medium">PRICE ProtoSem • Week 4</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <a href="index.html#protosem" class="px-4 py-2 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Archive</span>
+        </a>
+        <a href="resume.html" target="_blank" class="btn-gold px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider hidden sm:flex items-center gap-2">
+          <i class="fa-solid fa-file-lines text-xs"></i>
+          <span>Resume</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="bg-black-gold-hero flex-grow pt-32 pb-24 relative overflow-hidden">
+    <div class="absolute inset-0 gold-grid-overlay opacity-40 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      
+      <!-- Breadcrumb & Navigation Links -->
+      <div class="flex items-center justify-between text-xs font-mono mb-6" data-aos="fade-down">
+        <div class="flex items-center gap-2">
+          <a href="index.html#protosem" class="text-gold-400 hover:underline">ProtoSem Archive</a>
+          <span class="text-obsidian-400">/</span>
+          <span class="text-white font-bold">Week 4</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="week-3.html" class="text-obsidian-300 hover:text-gold-300 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-chevron-left text-[10px]"></i> Week 3
+          </a>
+          <span class="text-obsidian-600">•</span>
+          <a href="week-06.html" class="text-obsidian-300 hover:text-gold-300 transition-colors flex items-center gap-1">
+            <span>Week 6</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Header Card -->
+      <div class="luxe-gold-card p-8 sm:p-12 rounded-3xl mb-12 border-l-4 border-gold-500" data-aos="fade-up">
+        <div class="flex flex-wrap items-center gap-2.5 mb-4">
+          <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 text-black font-extrabold text-xs font-mono uppercase tracking-wider shadow-sm">
+            PHASE 01 // FOUNDATIONS & PROBLEM DEFINITION
+          </span>
+          <span class="px-3 py-1 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 font-mono text-xs font-bold">
+            Chapter 4 of 20
+          </span>
+          <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-xs"></i> Completed Milestone
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
+          Week 4 – Embedded Systems, Sensors and IoT Development
+        </h1>
+        <p class="text-gold-400 text-sm sm:text-base font-mono font-medium leading-relaxed">
+          Week 4 focused on computational hardware, Arduino Uno, microcontrollers, sensors, actuators, communication protocols, IoT, Chrome extensions, and the development of a smart room model.
+        </p>
+      </div>
+
+      <!-- Week 4 Overview Content Section -->
+      <div class="luxe-gold-card p-8 sm:p-12 rounded-3xl mb-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-6">
+          <i class="fa-solid fa-sparkles text-gold-400"></i>
+          <span>WEEK 4 OVERVIEW & SYNOPSIS</span>
+        </div>
+
+        <div class="space-y-6 text-obsidian-200 text-base sm:text-lg leading-relaxed">
+          <p>
+            Week 4 expanded our hardware engineering toolkit into the domain of intelligent embedded systems and interconnected Internet of Things (IoT) architectures. We transitioned from passive discrete components to programmable microcontrollers, investigating how the <strong class="text-white font-bold">Arduino Uno</strong> and embedded processing platforms interpret sensory inputs, coordinate hardware buses, and execute deterministic control logic.
+          </p>
+
+          <p>
+            Throughout the week, we mastered digital and analog sensor interfacing, bus-level communication protocols (<strong class="text-gold-300 font-bold">UART, I²C, SPI</strong>), motion sensing with the <strong class="text-gold-300 font-bold">MPU6050</strong>, robotic actuation using the <strong class="text-gold-300 font-bold">SG90 servo motor</strong>, Chrome extension browser integration, and constructed a fully operational <strong class="text-white font-bold">Smart Room Model</strong> featuring real-time environmental telemetry and live browser automation.
+          </p>
+
+          <div class="p-5 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-base sm:text-lg flex items-center gap-3">
+            <span class="text-2xl">✨</span>
+            <span>Bridging physical embedded electronics with modern IoT web telemetry, bus communication, and automated smart room control!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- DETAILED LEARNING SECTIONS (SECTIONS 1 TO 9) -->
+      <!-- ============================================================ -->
+      <div class="space-y-12 mb-16">
+
+        <!-- SECTION 01: Computational Hardware and System Integration -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">1</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">System Architecture</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Computational Hardware and System Integration</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              Different electronic and computational hardware components must operate in tight synchronization to create cohesive, reliable functional systems. System integration connects low-level electrical distribution (voltage regulators, decoupling capacitors, ground planes) with high-level processing logic and peripheral transducers.
+            </p>
+            <p>
+              By establishing structured power rails, matching signal impedance, preventing ground loops, and coordinating clock signals, diverse subsystems — ranging from delicate analog sensors to high-current actuators and communication transceivers — can exchange data accurately without electrical noise or signal degradation.
+            </p>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20 text-center">
+              <i class="fa-solid fa-plug text-gold-400 text-base mb-1 block"></i>
+              <span class="text-white font-bold block">Power Distribution</span>
+              <span class="text-obsidian-400 text-[11px]">Stable 5V/3.3V voltage rails</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20 text-center">
+              <i class="fa-solid fa-microchip text-gold-400 text-base mb-1 block"></i>
+              <span class="text-white font-bold block">Processing Core</span>
+              <span class="text-obsidian-400 text-[11px]">Microcontroller compute unit</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20 text-center">
+              <i class="fa-solid fa-sliders text-gold-400 text-base mb-1 block"></i>
+              <span class="text-white font-bold block">Peripheral IO</span>
+              <span class="text-obsidian-400 text-[11px]">Sensory inputs & actuators</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 02: Arduino Uno and Board Components -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">2</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Hardware Platform</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Arduino Uno and Board Components</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              The <strong class="text-white font-semibold">Arduino Uno</strong> is an industry-standard open-source microcontroller board based on the Microchip <strong class="text-gold-300 font-semibold">ATmega328P</strong>. We analyzed each hardware component to understand its specific role in embedded prototyping:
+            </p>
+          </div>
+
+          <!-- Arduino Hardware Pinout Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-mono mb-4">
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1">Microcontroller (ATmega328P)</span>
+              <p class="text-obsidian-300 font-sans text-xs">8-bit AVR RISC processor operating at 16 MHz with 32 KB flash memory, 2 KB SRAM, and 1 KB EEPROM.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1">Digital I/O Pins (0–13)</span>
+              <p class="text-obsidian-300 font-sans text-xs">14 digital pins for binary input/output; 6 pins provide 8-bit Pulse Width Modulation (PWM ~3, 5, 6, 9, 10, 11).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1">Analog Input Pins (A0–A5)</span>
+              <p class="text-obsidian-300 font-sans text-xs">6 analog channels connected to a 10-bit Analog-to-Digital Converter (ADC) mapping 0–5V to values 0–1023.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1">Power Pins & Regulators</span>
+              <p class="text-obsidian-300 font-sans text-xs">Regulated 5V, 3.3V, GND reference pins, and Vin input supporting 7–12V external barrel-jack power supply.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20 sm:col-span-2">
+              <span class="text-gold-400 font-bold block mb-1">USB Connection, Crystal & Reset Button</span>
+              <p class="text-obsidian-300 font-sans text-xs">Type-B USB port for firmware flashing and Serial UART telemetry; 16 MHz quartz crystal for timing; and momentary hardware reset switch.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 03: Microcontrollers and Electronic Components (WITH PHOTO 3) -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">3</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Embedded Processing</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Microcontrollers and Electronic Components</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              Microcontrollers act as the cognitive core of embedded systems. They continually sample electrical signals from connected sensors, interpret those readings through software logic stored in flash memory, and assert precise digital or PWM control voltages to actuate external components.
+            </p>
+            <p>
+              In our hands-on prototyping session, we interfaced microcontrollers with breadboard circuits, wiring pull-up resistors, digital temperature/humidity sensors (DHT11), and status indicators. The microcontroller's internal GPIO registers allow millisecond-level responsiveness to real-time environmental variations.
+            </p>
+          </div>
+
+          <!-- PHOTO 3: Microcontroller and DHT11 Circuit Photo -->
+          <div class="photo-frame max-w-2xl mx-auto" onclick="openLightbox('public/images/week4/esp32-dht11-microcontroller-circuit.jpg', 'Microcontroller and circuit integration — connecting development board to DHT11 sensor and breadboard indicator LEDs.')">
+            <div class="relative bg-black flex items-center justify-center overflow-hidden">
+              <img 
+                src="public/images/week4/esp32-dht11-microcontroller-circuit.jpg" 
+                onerror="this.src='images/week4/esp32-dht11-microcontroller-circuit.jpg'" 
+                alt="Microcontroller and DHT11 sensor circuit wiring with breadboard indicator LEDs" 
+                class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              >
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+              <p class="text-xs sm:text-sm font-mono text-gold-300 font-semibold">
+                "Microcontroller and circuit integration — connecting the development board to a DHT11 environmental sensor and breadboard indicator LEDs."
+              </p>
+              <p class="text-[11px] text-obsidian-400 font-mono mt-1">
+                Embedded Hardware Session • Microcontroller GPIO & Digital Sensor Interfacing
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 04: Chrome Extension Development -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">4</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Browser Augmentation</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Chrome Extension Development</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              We explored <strong class="text-white font-semibold">Google Chrome Extensions</strong>, which are lightweight software modules built using core web technologies (HTML, CSS, JavaScript) to extend browser functionality and customize user workflows.
+            </p>
+            <p>
+              We studied the <strong class="text-gold-300 font-semibold">Manifest V3</strong> extension architecture:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-obsidian-300 text-sm pl-2 font-sans">
+              <li><strong class="text-white">Manifest.json</strong>: Declares permissions, background service workers, and UI entry points.</li>
+              <li><strong class="text-white">Background Service Worker</strong>: Event-driven background script managing lifecycle events and network requests.</li>
+              <li><strong class="text-white">Popup UI & Side Panels</strong>: Interactive lightweight dashboards providing instant user controls.</li>
+              <li><strong class="text-white">Hardware Bridge Potential</strong>: Connecting browser tabs with Web Serial or local WebSocket APIs to monitor and trigger IoT hardware directly from browser tabs.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SECTION 05: Sensors, Actuators, and Communication Protocols (WITH PHOTO 1) -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">5</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Bus Protocols & Interfacing</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Sensors, Actuators, and Communication Protocols</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              In embedded design, <strong class="text-white font-semibold">sensors</strong> convert physical parameters (temperature, light, orientation) into electrical signals, while <strong class="text-white font-semibold">actuators</strong> convert electrical command signals into physical movement or illumination. To communicate with these peripherals, microcontrollers use dedicated hardware protocols:
+            </p>
+          </div>
+
+          <!-- Protocols Detailed Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-8 text-xs font-mono">
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1 text-sm"><i class="fa-solid fa-arrows-left-right text-xs mr-1"></i> UART</span>
+              <p class="text-obsidian-300 font-sans text-xs mb-2">Universal Asynchronous Receiver-Transmitter</p>
+              <p class="text-obsidian-400 font-sans text-[11px] leading-relaxed">Asynchronous point-to-point serial communication using separate TX (transmit) and RX (receive) lines at agreed baud rates (e.g. 9600, 115200) without a shared clock.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1 text-sm"><i class="fa-solid fa-network-wired text-xs mr-1"></i> I²C</span>
+              <p class="text-obsidian-300 font-sans text-xs mb-2">Inter-Integrated Circuit Bus</p>
+              <p class="text-obsidian-400 font-sans text-[11px] leading-relaxed">Synchronous multi-device bus using only two shared lines: SDA (Serial Data) and SCL (Serial Clock) with 7-bit device addressing. Ideal for displays and sensor modules.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1 text-sm"><i class="fa-solid fa-microchip text-xs mr-1"></i> SPI</span>
+              <p class="text-obsidian-300 font-sans text-xs mb-2">Serial Peripheral Interface</p>
+              <p class="text-obsidian-400 font-sans text-[11px] leading-relaxed">High-speed full-duplex synchronous 4-wire bus: MOSI, MISO, SCK (clock), and SS/CS (slave select). Ideal for high-bandwidth displays, flash memory, and SD cards.</p>
+            </div>
+          </div>
+
+          <!-- PHOTO 1: Joystick + OLED I2C Controller Photo -->
+          <div class="photo-frame max-w-2xl mx-auto" onclick="openLightbox('public/images/week4/joystick-oled-i2c-controller.jpg', 'Interactive input and display integration via I2C bus — connecting an analog joystick and 0.96-inch OLED display (SSD1306) with SDA/SCL lines.')">
+            <div class="relative bg-black flex items-center justify-center overflow-hidden">
+              <img 
+                src="public/images/week4/joystick-oled-i2c-controller.jpg" 
+                onerror="this.src='images/week4/joystick-oled-i2c-controller.jpg'" 
+                alt="Interactive input and display integration via I2C bus with joystick and OLED display" 
+                class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              >
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+              <p class="text-xs sm:text-sm font-mono text-gold-300 font-semibold">
+                "Interactive input and display integration via I²C bus — connecting an analog joystick and 0.96-inch OLED display (SSD1306) with SDA/SCL lines."
+              </p>
+              <p class="text-[11px] text-obsidian-400 font-mono mt-1">
+                Arduino IDE Code Flashing • I²C Bus Peripheral Interfacing (SDA 21, SCL 22)
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 06: MPU6050 Motion Sensor -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">6</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Inertial Measurement</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">MPU6050 Motion Sensor</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              The <strong class="text-white font-semibold">MPU6050</strong> is a versatile 6-axis MotionTracking device that combines a <strong class="text-gold-300 font-semibold">3-axis accelerometer</strong> and a <strong class="text-gold-300 font-semibold">3-axis gyroscope</strong> on a single silicon die.
+            </p>
+            <p>
+              The accelerometer measures gravitational and linear acceleration along the X, Y, and Z axes, while the gyroscope measures rotational angular velocity (degrees per second). Communicating via the <strong class="text-white font-semibold">I²C bus</strong>, the MPU6050 features an onboard Digital Motion Processor (DMP) capable of computing complex sensor-fusion algorithms to calculate pitch, roll, and yaw angles. This makes it foundational for robotics self-balancing, aerial drone stabilization, gesture controls, and orientation-aware IoT devices.
+            </p>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1">3-Axis Accelerometer (±2g to ±16g)</span>
+              <p class="text-obsidian-300 font-sans text-xs">Captures static tilt angles and dynamic linear acceleration forces.</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block mb-1">3-Axis Gyroscope (±250 to ±2000 °/s)</span>
+              <p class="text-obsidian-300 font-sans text-xs">Measures rapid rotational orientation changes without gravitational latency.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 07: SG90 Servo Motor -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">7</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Precision Actuation</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">SG90 Servo Motor</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              The <strong class="text-white font-semibold">SG90 9g micro servo motor</strong> uses pulse-width modulation (PWM) control signals to rotate and hold its output shaft at exact angular positions within a <strong class="text-gold-300 font-semibold">0° to 180° range</strong>.
+            </p>
+            <p>
+              Inside the servo, an internal potentiometer monitors shaft position, creating a closed-loop feedback mechanism with an error amplifier that continuously compares the incoming pulse width (typically 1.0 ms for 0°, 1.5 ms for 90°, and 2.0 ms for 180°) against the physical position. This precision makes the SG90 invaluable for smart lock latches, automated door gates, camera pan-tilt mechanisms, and robotic grippers.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 08: Internet of Things (IoT) (WITH PHOTO 2) -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">8</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Connected Ecosystems</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Internet of Things (IoT)</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              The <strong class="text-white font-semibold">Internet of Things (IoT)</strong> bridges physical hardware with digital networks. By connecting sensors, microcontrollers, communication protocols, and actuators to web dashboards, physical spaces transform into intelligent, self-monitoring environments.
+            </p>
+            <p>
+              We explored the complete IoT pipeline: microcontrollers collect physical readings from sensors (temperature, humidity), process the raw values, and transmit live telemetry data via HTTP endpoints or WebSockets to a web browser dashboard. When threshold conditions are met, the system can trigger automated actuator responses or allow operators to send commands back to the hardware.
+            </p>
+          </div>
+
+          <!-- PHOTO 2: IoT Environmental Dashboard Photo -->
+          <div class="photo-frame max-w-2xl mx-auto" onclick="openLightbox('public/images/week4/iot-temperature-humidity-dashboard.jpg', 'Real-time IoT environmental monitoring dashboard displaying live temperature (29.4°C), relative humidity (27.0%), and hardware threshold status.')">
+            <div class="relative bg-black flex items-center justify-center overflow-hidden">
+              <img 
+                src="public/images/week4/iot-temperature-humidity-dashboard.jpg" 
+                onerror="this.src='images/week4/iot-temperature-humidity-dashboard.jpg'" 
+                alt="ESP32 Temperature Dashboard - Real-Time Environmental Monitoring System with breadboard LEDs and DHT11 sensor" 
+                class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              >
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+              <p class="text-xs sm:text-sm font-mono text-gold-300 font-semibold">
+                "Real-time IoT environmental monitoring dashboard displaying live temperature (29.4°C), relative humidity (27.0%), and hardware threshold status."
+              </p>
+              <p class="text-[11px] text-obsidian-400 font-mono mt-1">
+                IoT Telemetry System • ESP32 & DHT11 Live Web Dashboard Interface
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 09: Smart Room Model (WITH PHOTO 4) -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">9</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Applied Prototyping</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Smart Room Model</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              In our hands-on practical activity, I worked on developing a <strong class="text-white font-semibold">Smart Room Model</strong>, exploring how disparate hardware components can be integrated into an automated, interactive environment.
+            </p>
+            <p>
+              The system incorporated an embedded development board wired to a breadboard circuit with room indicator lights (Red LED on GPIO 26, Green LED on GPIO 27) and environmental sensors. We created a real-time web control panel (<strong class="text-gold-300 font-semibold">Smart LED Control Dashboard</strong>) that allowed users to monitor room conditions and remotely toggle room lights directly from a computer browser interface, confirming successful bi-directional hardware-to-software communication.
+            </p>
+          </div>
+
+          <!-- PHOTO 4: Smart Room IoT LED Control Photo -->
+          <div class="photo-frame max-w-2xl mx-auto" onclick="openLightbox('public/images/week4/smart-room-iot-led-control.jpg', 'Smart Room Model IoT dashboard — interactive browser interface controlling GPIO-driven red and green room status LEDs in real time.')">
+            <div class="relative bg-black flex items-center justify-center overflow-hidden">
+              <img 
+                src="public/images/week4/smart-room-iot-led-control.jpg" 
+                onerror="this.src='images/week4/smart-room-iot-led-control.jpg'" 
+                alt="Smart Room Model Smart LED Control Dashboard with breadboard LEDs actively toggled on" 
+                class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              >
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+              <p class="text-xs sm:text-sm font-mono text-gold-300 font-semibold">
+                "Smart Room Model IoT dashboard — interactive browser interface controlling GPIO-driven red and green room status LEDs in real time."
+              </p>
+              <p class="text-[11px] text-obsidian-400 font-mono mt-1">
+                Smart Room Implementation • Browser-to-Hardware Bi-Directional IoT Automation
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- RESPONSIVE IMAGE GALLERY SECTION (ALL 9 TOPICS) -->
+      <!-- ============================================================ -->
+      <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl mb-12" data-aos="fade-up">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+          <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-images"></i>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Visual Documentation</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Week 4 Activity Photo Gallery</h2>
+          </div>
+        </div>
+
+        <p class="text-obsidian-300 text-sm mb-8 leading-relaxed">
+          Comprehensive photographic documentation of Week 4 embedded systems, IoT development, and smart room prototyping. Below, your practical activity photographs are organized across all 9 curriculum topics. Click any photograph to view it in high-resolution lightbox view.
+        </p>
+
+        <!-- Gallery Grid (Responsive 1-col on mobile, 2-col on desktop) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Topic 1: Computational Hardware -->
+          <div class="photo-frame flex flex-col justify-between group" onclick="openLightbox('public/images/week4/joystick-oled-i2c-controller.jpg', 'Topic 1: Computational Hardware and Peripheral Coordination.')">
+            <div class="relative bg-black h-72 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week4/joystick-oled-i2c-controller.jpg" 
+                onerror="this.src='images/week4/joystick-oled-i2c-controller.jpg'" 
+                alt="Computational Hardware and System Integration" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                1. Computational Hardware
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">Computational Hardware & Interfacing</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Power management, microcontroller compute units, and peripheral subsystem integration.</p>
+            </div>
+          </div>
+
+          <!-- Topic 2: Arduino Uno and Board Components -->
+          <div class="photo-frame flex flex-col justify-between group" onclick="openLightbox('public/images/week4/esp32-dht11-microcontroller-circuit.jpg', 'Topic 2 & 3: Development Board Components, Microcontroller Core, and Pinouts.')">
+            <div class="relative bg-black h-72 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week4/esp32-dht11-microcontroller-circuit.jpg" 
+                onerror="this.src='images/week4/esp32-dht11-microcontroller-circuit.jpg'" 
+                alt="Development Board Components and Pinouts" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                2. Board Components & Pins
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">Development Board Architecture</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Microcontroller core, digital/PWM pins, analog inputs, and USB communication link.</p>
+            </div>
+          </div>
+
+          <!-- Topic 3: Microcontroller and Circuit Connections -->
+          <div class="photo-frame flex flex-col justify-between group" onclick="openLightbox('public/images/week4/esp32-dht11-microcontroller-circuit.jpg', 'Topic 3: Microcontroller GPIO, Circuit Routing, and Breadboard Interconnections.')">
+            <div class="relative bg-black h-72 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week4/esp32-dht11-microcontroller-circuit.jpg" 
+                onerror="this.src='images/week4/esp32-dht11-microcontroller-circuit.jpg'" 
+                alt="Microcontroller and Circuit Connections" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                3. Microcontroller & Circuits
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">Circuit Interconnections & Sensors</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Live breadboard wiring with pull-up resistors, DHT11 environmental sensor, and status LEDs.</p>
+            </div>
+          </div>
+
+          <!-- Topic 4: Chrome Extension Development -->
+          <div class="photo-frame flex flex-col justify-between group border-dashed border-gold-500/30 bg-obsidian-950/70 p-6 text-center">
+            <div class="flex flex-col items-center justify-center py-6">
+              <div class="w-14 h-14 rounded-2xl bg-gold-500/10 border border-gold-500/30 text-gold-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-chrome"></i>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-black/80 border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase mb-2">
+                4. Chrome Extension Dev
+              </span>
+              <h3 class="text-sm font-bold text-white mb-2">Manifest V3 Extension Architecture</h3>
+              <p class="text-xs text-obsidian-300 max-w-xs mx-auto leading-relaxed mb-4">
+                Studied browser extension workflows, background service workers, popup controls, and hardware bridging APIs.
+              </p>
+              <span class="text-[11px] font-mono text-gold-400/80 bg-obsidian-900 px-3 py-1.5 rounded-lg border border-gold-500/20">
+                <i class="fa-solid fa-folder-open text-xs mr-1"></i> Ready for photo: <code class="text-white">images/week4/chrome-extension-dev.jpg</code>
+              </span>
+            </div>
+          </div>
+
+          <!-- Topic 5: Sensors, Actuators, and Communication Protocols -->
+          <div class="photo-frame flex flex-col justify-between group" onclick="openLightbox('public/images/week4/joystick-oled-i2c-controller.jpg', 'Topic 5: Sensors, Actuators, and I2C/UART Communication Protocols.')">
+            <div class="relative bg-black h-72 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week4/joystick-oled-i2c-controller.jpg" 
+                onerror="this.src='images/week4/joystick-oled-i2c-controller.jpg'" 
+                alt="Sensors, Actuators, and Communication Protocols" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                5. Sensors, Actuators & Protocols
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">I²C Bus Peripheral Communication</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Two-wire I²C bus driving SSD1306 OLED display alongside analog joystick coordinate sensing.</p>
+            </div>
+          </div>
+
+          <!-- Topic 6: MPU6050 Motion Sensor -->
+          <div class="photo-frame flex flex-col justify-between group border-dashed border-gold-500/30 bg-obsidian-950/70 p-6 text-center">
+            <div class="flex flex-col items-center justify-center py-6">
+              <div class="w-14 h-14 rounded-2xl bg-gold-500/10 border border-gold-500/30 text-gold-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-compass"></i>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-black/80 border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase mb-2">
+                6. MPU6050 Motion Sensor
+              </span>
+              <h3 class="text-sm font-bold text-white mb-2">6-Axis Accelerometer & Gyroscope</h3>
+              <p class="text-xs text-obsidian-300 max-w-xs mx-auto leading-relaxed mb-4">
+                Learned spatial motion tracking, angular velocity, and Digital Motion Processor (DMP) sensor fusion.
+              </p>
+              <span class="text-[11px] font-mono text-gold-400/80 bg-obsidian-900 px-3 py-1.5 rounded-lg border border-gold-500/20">
+                <i class="fa-solid fa-folder-open text-xs mr-1"></i> Ready for photo: <code class="text-white">images/week4/mpu6050-sensor.jpg</code>
+              </span>
+            </div>
+          </div>
+
+          <!-- Topic 7: SG90 Servo Motor -->
+          <div class="photo-frame flex flex-col justify-between group border-dashed border-gold-500/30 bg-obsidian-950/70 p-6 text-center">
+            <div class="flex flex-col items-center justify-center py-6">
+              <div class="w-14 h-14 rounded-2xl bg-gold-500/10 border border-gold-500/30 text-gold-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-black/80 border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase mb-2">
+                7. SG90 Servo Motor
+              </span>
+              <h3 class="text-sm font-bold text-white mb-2">PWM Closed-Loop Position Control</h3>
+              <p class="text-xs text-obsidian-300 max-w-xs mx-auto leading-relaxed mb-4">
+                Studied 0°–180° angular shaft rotation via pulse-width modulation for automated mechanical actuation.
+              </p>
+              <span class="text-[11px] font-mono text-gold-400/80 bg-obsidian-900 px-3 py-1.5 rounded-lg border border-gold-500/20">
+                <i class="fa-solid fa-folder-open text-xs mr-1"></i> Ready for photo: <code class="text-white">images/week4/sg90-servo-motor.jpg</code>
+              </span>
+            </div>
+          </div>
+
+          <!-- Topic 8: IoT Learning Activity -->
+          <div class="photo-frame flex flex-col justify-between group" onclick="openLightbox('public/images/week4/iot-temperature-humidity-dashboard.jpg', 'Topic 8: Real-Time IoT Environmental Monitoring Dashboard.')">
+            <div class="relative bg-black h-72 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week4/iot-temperature-humidity-dashboard.jpg" 
+                onerror="this.src='images/week4/iot-temperature-humidity-dashboard.jpg'" 
+                alt="ESP32 Temperature Dashboard - Real-Time Environmental Monitoring System" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                8. IoT Learning Activity
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">Real-Time Environmental Telemetry</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Live web dashboard streaming temperature (29.4°C), humidity (27.0%), and alert status.</p>
+            </div>
+          </div>
+
+          <!-- Topic 9: Smart Room Model -->
+          <div class="photo-frame flex flex-col justify-between group md:col-span-2" onclick="openLightbox('public/images/week4/smart-room-iot-led-control.jpg', 'Topic 9: Smart Room Model — Browser-Based IoT LED Control Dashboard.')">
+            <div class="relative bg-black h-72 sm:h-80 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week4/smart-room-iot-led-control.jpg" 
+                onerror="this.src='images/week4/smart-room-iot-led-control.jpg'" 
+                alt="Smart Room Model Smart LED Control Dashboard with breadboard LEDs" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-gold-500/40 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                9. Smart Room Model
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs sm:text-sm font-bold text-white mb-1">Smart Room Model Remote LED Control</h3>
+              <p class="text-xs text-obsidian-400 leading-snug">Interactive browser dashboard toggling room lighting actuators on GPIO 26 and GPIO 27 with active visual feedback.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Key Takeaways Section -->
+      <div class="mb-12" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-6">
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Key Takeaways & Milestones</h2>
+          <div class="h-px bg-gold-500/20 flex-grow"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+          <!-- Takeaway 1 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Computational Hardware & Embedded Systems</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Understood how computational processing cores, power distribution, and peripheral interfaces integrate to build responsive embedded systems.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#EmbeddedSystems #HardwareIntegration</span>
+            </div>
+          </div>
+
+          <!-- Takeaway 2 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-diagram-project"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Arduino Uno Components & Pin Functions</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Mastered ATmega328P architecture, 14 digital pins, 6 PWM channels, 10-bit analog ADC pins, power regulation, and serial programming headers.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#ArduinoUno #ATmega328P #PinFunctions</span>
+            </div>
+          </div>
+
+          <!-- Takeaway 3 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-tower-broadcast"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Sensors, Actuators & Microcontrollers</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Explored closed-loop sensing and actuation, transforming environmental stimuli into digital metrics and controlling physical output devices.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#SensorsAndActuators #MicrocontrollerIO</span>
+            </div>
+          </div>
+
+          <!-- Takeaway 4 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">UART, I²C, and SPI Protocols</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Learned differences between asynchronous serial UART, two-wire shared bus I²C (SDA/SCL), and high-speed synchronous multi-line SPI buses.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#UART #I2C #SPI #HardwareProtocols</span>
+            </div>
+          </div>
+
+          <!-- Takeaway 5 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-compass"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">MPU6050 Motion Sensor & SG90 Servo</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Applied 6-axis accelerometer/gyroscope motion measurement alongside precision 0–180° PWM closed-loop servo motor positioning.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#MPU6050 #SG90Servo #Robotics</span>
+            </div>
+          </div>
+
+          <!-- Takeaway 6 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-wifi"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">IoT Fundamentals & Applications</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Learned how connected IoT nodes stream real-time sensor metrics to cloud/web endpoints to enable intelligent monitoring and automation.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#IoT #CloudTelemetry #ConnectedDevices</span>
+            </div>
+          </div>
+
+          <!-- Takeaway 7 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-brands fa-chrome"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Chrome Extension Development</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Explored browser extension architecture (Manifest V3, background workers, popups) and its potential as an interactive hardware bridge.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#ChromeExtensions #WebExtensions #ManifestV3</span>
+            </div>
+          </div>
+
+          <!-- Takeaway 8 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-house-signal"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Smart Room Automation Model</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Constructed a functional prototype integrating environmental telemetry and browser-controlled GPIO actuators in an automated room setup.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#SmartRoom #HomeAutomation #HardwareTesting</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Skills & Topic Tags -->
+      <div class="luxe-gold-card p-8 rounded-3xl mb-12" data-aos="fade-up" data-aos-delay="250">
+        <h3 class="text-xs font-mono font-bold text-gold-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-tags text-gold-400"></i>
+          <span>Topics & Keywords Covered</span>
+        </h3>
+        <div class="flex flex-wrap gap-2.5">
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Embedded Systems</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Arduino Uno</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Microcontrollers</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#UART</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#I2C Bus</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#SPI Protocol</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#MPU6050 Motion Sensor</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#SG90 Servo</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Internet of Things</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Chrome Extensions</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Smart Room Model</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#DHT11 Sensor</span>
+        </div>
+      </div>
+
+      <!-- Navigation & Action Footer -->
+      <div class="luxe-gold-card p-8 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6" data-aos="fade-up">
+        <div>
+          <p class="text-xs uppercase font-mono text-gold-400 font-bold mb-1">PRICE ProtoSem Archive</p>
+          <p class="text-base sm:text-lg font-bold text-white">Explore previous weeks or return to portfolio</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="week-3.html" class="px-5 py-3 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Week 3</span>
+          </a>
+          <a href="index.html#protosem" class="btn-gold px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+            <span>Portfolio Archive</span>
+          </a>
+          <a href="week-06.html" class="px-5 py-3 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2 hidden sm:flex">
+            <span>Week 06</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Lightbox Modal for Full-Size Image Viewing -->
+  <div id="image-lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 p-4">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-obsidian-800 text-obsidian-300 hover:text-gold-400 flex items-center justify-center text-lg border border-gold-500/30 transition-colors z-10">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="max-w-4xl max-h-[90vh] flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Enlarged view" class="max-w-full max-h-[75vh] object-contain rounded-xl border border-gold-500/30 shadow-2xl">
+      <p id="lightbox-caption" class="text-xs sm:text-sm font-mono text-gold-300 mt-4 text-center max-w-2xl px-4"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-obsidian-950 py-8 text-center text-xs text-obsidian-400 border-t border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
+      <span>© 2026 Brindha . S • PRICE ProtoSem Trainee</span>
+      <a href="index.html#protosem" class="text-gold-400 hover:underline">View All 20 Weeks</a>
+    </div>
+  </footer>
+
+  <!-- AOS & Lightbox Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('image-lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      cap.innerText = caption;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('image-lightbox');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100');
+    }
+
+    document.getElementById('image-lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'image-lightbox') closeLightbox();
+    });
+  </script>
+</body>
+</html>

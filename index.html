@@ -1734,10 +1734,63 @@
         ],
         tags: ['Computational Hardware', 'Electronics', 'Thinker Cards', 'Sensors to Signals', 'PCB Assembly', 'Circuit Testing'],
         discipline: 'Computational Hardware, PCB Assembly & Circuit Design'
+      },
+      {
+        week: 4,
+        weekFormatted: 'WEEK 04',
+        title: 'Week 04 // Embedded Systems, Sensors and IoT Development',
+        phase: 1,
+        phaseLabel: 'PHASE 01',
+        slug: 'week-04',
+        status: 'completed',
+        statusText: 'EMBEDDED SYSTEMS & IOT',
+        pageUrl: 'week-4.html',
+        summaryHtml: `
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian-950 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-sparkles text-gold-400"></i>
+              <span>Week 4 Embedded Systems & IoT</span>
+            </div>
+            
+            <p>
+              Week 4 focused on computational hardware, Arduino Uno, microcontrollers, sensors, actuators, communication protocols, IoT, Chrome extensions, and the development of a smart room model.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-sm sm:text-base flex items-center gap-2.5">
+              <span>✨</span>
+              <span>Computational Hardware → Arduino Uno & Microcontrollers → Bus Protocols (UART, I²C, SPI) → IoT Telemetry & Smart Room Model!</span>
+            </div>
+
+            <!-- Activity Photo Previews -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="rounded-xl overflow-hidden border border-gold-500/25 bg-obsidian-950 flex flex-col">
+                <img src="public/images/week4/joystick-oled-i2c-controller.jpg" onerror="this.src=\'images/week4/joystick-oled-i2c-controller.jpg\'" alt="Interactive Joystick & I2C OLED Display" class="w-full h-32 object-cover">
+                <div class="p-2 text-[11px] font-mono text-obsidian-300 text-center">Joystick & I²C OLED Display</div>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gold-500/25 bg-obsidian-950 flex flex-col">
+                <img src="public/images/week4/iot-temperature-humidity-dashboard.jpg" onerror="this.src=\'images/week4/iot-temperature-humidity-dashboard.jpg\'" alt="IoT Environmental Temperature & Humidity Web Dashboard" class="w-full h-32 object-cover">
+                <div class="p-2 text-[11px] font-mono text-obsidian-300 text-center">IoT Temperature Dashboard</div>
+              </div>
+            </div>
+          </div>
+        `,
+        highlights: [
+          { icon: 'fa-microchip', title: 'Computational Hardware & System Integration', desc: 'Explored power rails, signal coordination, and peripheral integration in functional embedded systems.' },
+          { icon: 'fa-cubes', title: 'Arduino Uno & Board Components', desc: 'Analyzed ATmega328P core, 14 digital pins, 6 PWM channels, 10-bit analog pins, power, and serial USB.' },
+          { icon: 'fa-memory', title: 'Microcontrollers & Electronic Components', desc: 'Interfaced microcontrollers with breadboard circuits, GPIO registers, and environmental sensors.' },
+          { icon: 'fa-brands fa-chrome', title: 'Chrome Extension Development', desc: 'Studied Manifest V3, background workers, popup interfaces, and browser-to-hardware potential.' },
+          { icon: 'fa-network-wired', title: 'Sensors, Actuators & Bus Protocols', desc: 'Compared asynchronous serial UART, two-wire synchronous I²C (SDA/SCL), and 4-wire high-speed SPI.' },
+          { icon: 'fa-compass', title: 'MPU6050 6-Axis Motion Sensor', desc: 'Integrated accelerometer and gyroscope sensor fusion for spatial motion and orientation tracking.' },
+          { icon: 'fa-arrows-rotate', title: 'SG90 Micro Servo Motor', desc: 'Implemented precision 0° to 180° closed-loop PWM positioning for automated mechanisms.' },
+          { icon: 'fa-wifi', title: 'Internet of Things (IoT) Telemetry', desc: 'Connected microcontrollers to web dashboards for real-time environmental monitoring and telemetry.' },
+          { icon: 'fa-house-signal', title: 'Smart Room Model Prototyping', desc: 'Built a physical prototype with GPIO indicator LEDs and live browser-based remote control.' }
+        ],
+        tags: ['Embedded Systems', 'Arduino Uno', 'Microcontrollers', 'UART', 'I2C Bus', 'SPI Protocol', 'MPU6050', 'SG90 Servo', 'IoT', 'Chrome Extensions', 'Smart Room Model'],
+        discipline: 'Embedded Systems, Sensors & IoT Prototyping'
       }
     ];
 
-    for (let i = 4; i <= 20; i++) {
+    for (let i = 5; i <= 20; i++) {
       const phaseNum = Math.ceil(i / 5);
       const weekFormatted = i < 10 ? '0' + i : '' + i;
       if (i === 6) {
