@@ -1684,10 +1684,60 @@
         ],
         tags: ['Japanese 5S', 'Chatbot Technology', 'Algorithms', 'Meme Challenge', 'MIT App Inventor', 'Teamwork', 'Problem-Solving'],
         discipline: '5S Methodology, Conversational AI & Mobile Prototyping'
+      },
+      {
+        week: 3,
+        weekFormatted: 'WEEK 03',
+        title: 'Week 03 // Computational Hardware & Electronic Prototyping',
+        phase: 1,
+        phaseLabel: 'PHASE 01',
+        slug: 'week-03',
+        status: 'completed',
+        statusText: 'HARDWARE & PCB PROTOTYPING',
+        pageUrl: 'week-3.html',
+        summaryHtml: `
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian-950 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-sparkles text-gold-400"></i>
+              <span>Week 3 Hardware & Electronics</span>
+            </div>
+            
+            <p>
+              During Week 3 of my ProtoSem journey at <strong>Forge Innovation</strong>, I explored computational hardware, electronic components, circuit design, and the relationship between sensors and signals. The sessions focused on understanding how electronic systems work and applying this knowledge through hands-on prototyping and PCB assembly.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-sm sm:text-base flex items-center gap-2.5">
+              <span>✨</span>
+              <span>Computational Hardware → Thinker Cards → Sensor-Signal Interfacing → PCB Assembly & Live Circuit Verification!</span>
+            </div>
+
+            <!-- Activity Photo Previews -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="rounded-xl overflow-hidden border border-gold-500/25 bg-obsidian-950 flex flex-col">
+                <img src="public/images/week3/circuit-testing-led-breadboard.jpg" onerror="this.src=\'images/week3/circuit-testing-led-breadboard.jpg\'" alt="Breadboard Circuit Testing with 9V Battery and LED" class="w-full h-32 object-cover">
+                <div class="p-2 text-[11px] font-mono text-obsidian-300 text-center">Electronic Model Circuit Testing</div>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gold-500/25 bg-obsidian-950 flex flex-col">
+                <img src="public/images/week3/pcb-design-circuit-assembly.jpg" onerror="this.src=\'images/week3/pcb-design-circuit-assembly.jpg\'" alt="Collaborative PCB Assembly and Circuit Prototyping" class="w-full h-32 object-cover">
+                <div class="p-2 text-[11px] font-mono text-obsidian-300 text-center">PCB Assembly & Collaboration</div>
+              </div>
+            </div>
+          </div>
+        `,
+        highlights: [
+          { icon: 'fa-microchip', title: 'Understanding Computational Hardware', desc: 'Explored power, voltage, diodes, signal transmission, and fundamental electronic hardware systems.' },
+          { icon: 'fa-lightbulb', title: 'Thinker Card Activity', desc: 'Engaged in observational thinking and structured problem-solving from multifaceted viewpoints.' },
+          { icon: 'fa-network-wired', title: 'Electronic Model Development', desc: 'Constructed working physical circuit models connecting theory with practical component interactions.' },
+          { icon: 'fa-tower-broadcast', title: 'From Sensors to Signals', desc: 'Learned transducer mechanics converting environmental physical changes into processed electrical signals.' },
+          { icon: 'fa-layer-group', title: 'PCB Assembly & Circuit Integration', desc: 'Hands-on printed circuit board assembly, component placement, and physical circuit interconnects.' },
+          { icon: 'fa-circle-check', title: 'Circuit Testing & Implementation', desc: 'Troubleshot wiring connections and successfully validated live circuit functionality with active load.' }
+        ],
+        tags: ['Computational Hardware', 'Electronics', 'Thinker Cards', 'Sensors to Signals', 'PCB Assembly', 'Circuit Testing'],
+        discipline: 'Computational Hardware, PCB Assembly & Circuit Design'
       }
     ];
 
-    for (let i = 3; i <= 20; i++) {
+    for (let i = 4; i <= 20; i++) {
       const phaseNum = Math.ceil(i / 5);
       const weekFormatted = i < 10 ? '0' + i : '' + i;
       if (i === 6) {
