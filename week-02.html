@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 2: 5S Organization, Chatbots, Algorithms & Mobile Development | PRICE ProtoSem | Brindha . S</title>
+  <meta name="description" content="Week 2 of PRICE ProtoSem: Japanese 5S Workplace Organization, Introduction to Chatbot Technology, Understanding Algorithms, One-Day Meme Creation Challenge, MIT App Inventor Mobile App Development, and Team Problem-Solving.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: '#fdfbf0',
+              100: '#fbf5d9',
+              200: '#f6e7a6',
+              300: '#f0d56b',
+              400: '#f8d759',
+              500: '#eeba2b',
+              600: '#d39b3d',
+              700: '#b76d28',
+              800: '#8c4e1a',
+              900: '#5a2e0e',
+            },
+            obsidian: {
+              50: '#f4f5f7',
+              100: '#e4e6ec',
+              200: '#c5c9d6',
+              300: '#9fa6bb',
+              400: '#757e9b',
+              500: '#57607e',
+              600: '#424963',
+              700: '#2b3042',
+              800: '#1d1f26',
+              900: '#0f1015',
+              950: '#08090c',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation CDN -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f1015;
+      color: #f4f5f7;
+      overflow-x: hidden;
+    }
+
+    .bg-black-gold-hero {
+      background-color: #0f1015;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(238, 186, 43, 0.16) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, rgba(248, 215, 89, 0.12) 0px, transparent 55%),
+        radial-gradient(at 50% 60%, rgba(183, 109, 40, 0.12) 0px, transparent 60%),
+        linear-gradient(180deg, #0a0b0e 0%, #0f1015 50%, #14161e 100%);
+    }
+
+    .gold-grid-overlay {
+      background-size: 64px 64px;
+      background-image: 
+        linear-gradient(to right, rgba(238, 186, 43, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(238, 186, 43, 0.05) 1px, transparent 1px);
+    }
+
+    .luxe-gold-card {
+      background: rgba(20, 22, 30, 0.8);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(238, 186, 43, 0.22);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .luxe-gold-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(238, 186, 43, 0.6);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(238, 186, 43, 0.2);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 50%, #d39b3d 100%);
+      color: #0f1015;
+      box-shadow: 0 10px 25px -5px rgba(238, 186, 43, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 32px -5px rgba(238, 186, 43, 0.5);
+    }
+
+    .tag-badge {
+      transition: all 0.2s ease;
+    }
+    .tag-badge:hover {
+      transform: translateY(-2px);
+      border-color: #eeba2b;
+      color: #f8d759;
+      background: rgba(238, 186, 43, 0.15);
+    }
+
+    /* Photo Frame with Gold Border & Hover Glow */
+    .photo-frame {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(238, 186, 43, 0.28);
+      background: rgba(13, 14, 20, 0.95);
+      overflow: hidden;
+      box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(238, 186, 43, 0.08) inset;
+      transition: all 0.35s ease;
+    }
+    .photo-frame:hover {
+      border-color: rgba(238, 186, 43, 0.75);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px -10px rgba(0, 0, 0, 0.95), 0 0 24px rgba(238, 186, 43, 0.25);
+    }
+
+    /* Process Step Indicators */
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.875rem;
+      background: linear-gradient(135deg, #f8d759 0%, #eeba2b 100%);
+      color: #0f1015;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(238, 186, 43, 0.35);
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- Top Glass Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0f1015]/90 backdrop-blur-lg border-b border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-obsidian-950 font-mono font-black text-lg flex items-center justify-center shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+          B
+        </div>
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-wider text-white uppercase flex items-center gap-1.5">
+            PORTFOLIO
+            <span class="inline-block w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+          </span>
+          <span class="text-[11px] text-gold-400 font-mono font-medium">PRICE ProtoSem • Week 2</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <a href="index.html#protosem" class="px-4 py-2 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Archive</span>
+        </a>
+        <a href="resume.html" target="_blank" class="btn-gold px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider hidden sm:flex items-center gap-2">
+          <i class="fa-solid fa-file-lines text-xs"></i>
+          <span>Resume</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="bg-black-gold-hero flex-grow pt-32 pb-24 relative overflow-hidden">
+    <div class="absolute inset-0 gold-grid-overlay opacity-40 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      
+      <!-- Breadcrumb & Navigation Links -->
+      <div class="flex items-center justify-between text-xs font-mono mb-6" data-aos="fade-down">
+        <div class="flex items-center gap-2">
+          <a href="index.html#protosem" class="text-gold-400 hover:underline">ProtoSem Archive</a>
+          <span class="text-obsidian-400">/</span>
+          <span class="text-white font-bold">Week 2</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="week-1.html" class="text-obsidian-300 hover:text-gold-300 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-chevron-left text-[10px]"></i> Week 1
+          </a>
+          <span class="text-obsidian-600">•</span>
+          <a href="index.html#protosem" class="text-obsidian-300 hover:text-gold-300 transition-colors flex items-center gap-1">
+            <span>All Weeks</span> <i class="fa-solid fa-table-cells text-[10px]"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Header Card (Preserves Week 2 Heading) -->
+      <div class="luxe-gold-card p-8 sm:p-12 rounded-3xl mb-12 border-l-4 border-gold-500" data-aos="fade-up">
+        <div class="flex flex-wrap items-center gap-2.5 mb-4">
+          <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 text-black font-extrabold text-xs font-mono uppercase tracking-wider shadow-sm">
+            PHASE 01 // FOUNDATIONS & PROBLEM DEFINITION
+          </span>
+          <span class="px-3 py-1 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 font-mono text-xs font-bold">
+            Chapter 2 of 20
+          </span>
+          <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-xs"></i> Completed Milestone
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
+          Week 2: 5S Organization, Chatbot Tech, Algorithms & Mobile Development
+        </h1>
+        <p class="text-gold-400 text-sm sm:text-base font-mono font-medium leading-relaxed">
+          Japanese 5S Methodology, Chatbot Architecture, Algorithmic Thinking, Meme Creation Sprint, MIT App Inventor & Collaborative Problem-Solving
+        </p>
+      </div>
+
+      <!-- Week 2 Overview Content Section -->
+      <div class="luxe-gold-card p-8 sm:p-12 rounded-3xl mb-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-6">
+          <i class="fa-solid fa-sparkles text-gold-400"></i>
+          <span>WEEK 2 OVERVIEW & SUMMARY</span>
+        </div>
+
+        <div class="space-y-6 text-obsidian-200 text-base sm:text-lg leading-relaxed">
+          <p>
+            Week 2 focused on bridging disciplined industrial engineering practices with foundational computing, software architecture, and creative communication. We engaged in multifaceted learning modules ranging from the <strong class="text-gold-300 font-bold">Japanese 5S workplace organization technique</strong> to conversational AI, algorithmic reasoning, rapid visual prototyping, and team-based solution development.
+          </p>
+
+          <p>
+            Through interactive workshops, hands-on activities, and collaborative problem-solving challenges, we developed key competencies in organizing technical workspaces, designing chatbot conversational flows, formulating algorithmic problem-solving steps, building mobile applications with <strong class="text-white font-bold">MIT App Inventor</strong>, and communicating ideas succinctly through the 24-hour meme sprint.
+          </p>
+
+          <div class="p-5 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-base sm:text-lg flex items-center gap-3">
+            <span class="text-2xl">✨</span>
+            <span>Uniting workplace discipline with conversational intelligence, logical problem decomposition, and rapid mobile app prototyping!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- DETAILED TOPIC SECTIONS WITH CORRESPONDING PHOTOS -->
+      <!-- ============================================================ -->
+      <div class="space-y-12 mb-16">
+
+        <!-- TOPIC 01: Japanese 5S Workplace Organization Technique -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">1</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Industrial Best Practice</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Japanese 5S Workplace Organization Technique</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              Learned about the Japanese 5S methodology: <strong class="text-white font-semibold">Sort</strong>, <strong class="text-white font-semibold">Set in Order</strong>, <strong class="text-white font-semibold">Shine</strong>, <strong class="text-white font-semibold">Standardize</strong>, and <strong class="text-white font-semibold">Sustain</strong>. Understood how these principles help improve workplace organization, efficiency, cleanliness, and discipline.
+            </p>
+            <p>
+              In our hands-on workshop session, we put 5S directly into practice by sorting through laboratory and workstation hardware components. We identified essential items, eliminated clutter, categorized components into partitioned storage bins, standardized component labels, and established clean workflows to minimize search time and maintain a high-efficiency prototype bench.
+            </p>
+          </div>
+
+          <!-- 5S Principles Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 mb-8 text-center font-mono text-xs">
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block text-sm mb-1">1. Sort</span>
+              <span class="text-obsidian-300 text-[11px]">Seiri • Eliminate waste</span>
+            </div>
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block text-sm mb-1">2. Set in Order</span>
+              <span class="text-obsidian-300 text-[11px]">Seiton • A place for all</span>
+            </div>
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block text-sm mb-1">3. Shine</span>
+              <span class="text-obsidian-300 text-[11px]">Seiso • Clean & inspect</span>
+            </div>
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <span class="text-gold-400 font-bold block text-sm mb-1">4. Standardize</span>
+              <span class="text-obsidian-300 text-[11px]">Seiketsu • Systematize</span>
+            </div>
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20 col-span-2 sm:col-span-1">
+              <span class="text-gold-400 font-bold block text-sm mb-1">5. Sustain</span>
+              <span class="text-obsidian-300 text-[11px]">Shitsuke • Self-discipline</span>
+            </div>
+          </div>
+
+          <!-- PHOTO 1: Japanese 5S Photo -->
+          <div class="photo-frame max-w-2xl mx-auto">
+            <div class="relative bg-black flex items-center justify-center overflow-hidden">
+              <img 
+                src="public/images/week2/5s-workplace-organization.jpg" 
+                onerror="this.src='images/week2/5s-workplace-organization.jpg'" 
+                alt="Japanese 5S Workplace Organization Technique in laboratory session" 
+                class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              >
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+              <p class="text-xs sm:text-sm font-mono text-gold-300 font-semibold">
+                "Hands-on Japanese 5S implementation — sorting, cataloging, and arranging components into partitioned organizer bins for workspace efficiency."
+              </p>
+              <p class="text-[11px] text-obsidian-400 font-mono mt-1">
+                PRICE ProtoSem Lab • Sort & Set in Order (Seiri & Seiton) Activity
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 02: Introduction to Chatbot Technology -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">2</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Conversational AI Architecture</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Introduction to Chatbot Technology</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              Explored the fundamentals of chatbot technology, including user interaction, processing inputs, and generating appropriate responses through automated conversations.
+            </p>
+            <p>
+              We investigated the core building blocks of intelligent dialogue systems: <strong class="text-white font-semibold">Intent Configuration</strong> (mapping what the user intends to achieve), <strong class="text-white font-semibold">Training Phrases</strong> (variations in natural language queries), <strong class="text-white font-semibold">Entity Extraction</strong> (extracting key parameters like product names or dates), and <strong class="text-white font-semibold">Bot Response Engines</strong> (delivering contextual, dynamic answers). We also presented dialogue architectures demonstrating automated customer service workflows.
+            </p>
+          </div>
+
+          <!-- Core Chatbot Components -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <div class="flex items-center gap-2 text-gold-400 font-mono text-xs font-bold mb-1">
+                <i class="fa-solid fa-bullseye"></i> Intent Configuration
+              </div>
+              <p class="text-obsidian-300 text-xs">Identifying user goals and mapping speech patterns to conversational actions.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <div class="flex items-center gap-2 text-gold-400 font-mono text-xs font-bold mb-1">
+                <i class="fa-solid fa-comments"></i> Training Phrases
+              </div>
+              <p class="text-obsidian-300 text-xs">Feeding diverse input expressions to enhance NLP model accuracy and classification.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <div class="flex items-center gap-2 text-gold-400 font-mono text-xs font-bold mb-1">
+                <i class="fa-solid fa-reply-all"></i> Bot Response Logic
+              </div>
+              <p class="text-obsidian-300 text-xs">Generating contextual, timely, and personalized replies through rule-based or generative flows.</p>
+            </div>
+          </div>
+
+          <!-- PHOTO 2: Chatbot Intent Configuration Photo -->
+          <div class="photo-frame max-w-2xl mx-auto">
+            <div class="relative bg-black flex items-center justify-center overflow-hidden">
+              <img 
+                src="public/images/week2/chatbot-intent-configuration.jpg" 
+                onerror="this.src='images/week2/chatbot-intent-configuration.jpg'" 
+                alt="Presentation on Chatbot Technology and Intent Configuration" 
+                class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              >
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+              <p class="text-xs sm:text-sm font-mono text-gold-300 font-semibold">
+                "Presenting chatbot architecture and Intent Configuration — mapping training phrases, intents, and automated conversational responses."
+              </p>
+              <p class="text-[11px] text-obsidian-400 font-mono mt-1">
+                Conversational AI Module • Live Intent Flow Presentation
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 03: Understanding Algorithms -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">3</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Computational Thinking</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Understanding Algorithms</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              Learned how algorithms work and how logical, step-by-step instructions can be used to solve problems systematically.
+            </p>
+            <p>
+              We explored the core principles of algorithmic problem decomposition: breaking down intricate problems into well-defined sequential operations, deterministic decision branches (if/else conditionals), iterative loops, and modular sub-routines. Emphasized clear algorithmic flowcharts and pseudocode as the bedrock for scalable data science, automation, and software engineering.
+            </p>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20 text-center">
+              <i class="fa-solid fa-list-ol text-gold-400 text-base mb-1 block"></i>
+              <span class="text-white font-bold block">Sequential Logic</span>
+              <span class="text-obsidian-400 text-[11px]">Linear step-by-step execution</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20 text-center">
+              <i class="fa-solid fa-code-branch text-gold-400 text-base mb-1 block"></i>
+              <span class="text-white font-bold block">Decision Trees</span>
+              <span class="text-obsidian-400 text-[11px]">Conditional branching & filters</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-obsidian-950 border border-gold-500/20 text-center">
+              <i class="fa-solid fa-arrows-rotate text-gold-400 text-base mb-1 block"></i>
+              <span class="text-white font-bold block">Iterative Loops</span>
+              <span class="text-obsidian-400 text-[11px]">Repetitive pattern processing</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 04: One-Day Meme Creation Challenge -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">4</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Creative Communication Sprint</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">One-Day Meme Creation Challenge</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed mb-6">
+            <p>
+              Participated in a creative challenge to design a meme within one day. This activity encouraged creative thinking, visual communication, time management, and the ability to express ideas effectively.
+            </p>
+            <p>
+              Working under tight time constraints, our team used visual media platforms including Scratch block programming and multimedia design tools to build humorous yet insightful narratives. We created, tested, and presented our meme project on screen in front of our cohort, effectively learning how concise visual messaging and storytelling capture audience attention instantly.
+            </p>
+          </div>
+
+          <!-- PHOTO 3: Meme Creation Challenge Photo -->
+          <div class="photo-frame max-w-2xl mx-auto">
+            <div class="relative bg-black flex items-center justify-center overflow-hidden">
+              <img 
+                src="public/images/week2/meme-creation-challenge.jpg" 
+                onerror="this.src='images/week2/meme-creation-challenge.jpg'" 
+                alt="One-Day Meme Creation Challenge presentation with Scratch project and brainstorming notes" 
+                class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              >
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 text-center">
+              <p class="text-xs sm:text-sm font-mono text-gold-300 font-semibold">
+                "One-Day Meme Creation sprint — pitching our creative Scratch-based visual narrative and presenting storyboard concepts to peers."
+              </p>
+              <p class="text-[11px] text-obsidian-400 font-mono mt-1">
+                Creative Communication Sprint • Scratch Interactive Animation Showcase
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 05: Mobile App Development Using MIT App Inventor -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">5</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Rapid Prototyping Platform</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Mobile App Development Using MIT App Inventor</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              Explored MIT App Inventor, a visual programming platform for developing mobile applications. Worked on the concept of creating an application based on our team's assigned problem statement using interface components and block-based programming.
+            </p>
+            <p>
+              We designed intuitive user interfaces with mobile buttons, text inputs, dynamic lists, and responsive layouts. On the logic side, we configured block-based event listeners, variables, conditional evaluations, and data storage. This rapid mobile development environment enabled our team to translate abstract retail problem statements into testable on-device interactive applications quickly without deep mobile boilerplate overhead.
+            </p>
+          </div>
+
+          <div class="mt-6 p-4 rounded-2xl bg-obsidian-950 border border-gold-500/20 flex flex-col sm:flex-row items-center gap-4 text-xs font-mono">
+            <div class="w-10 h-10 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center text-lg flex-shrink-0">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <div class="space-y-1 text-center sm:text-left">
+              <span class="text-white font-bold">Visual Block Programming Paradigm</span>
+              <p class="text-obsidian-300 font-sans">Event-driven mobile architecture connecting UI sensors, screen transitions, and database logic seamlessly.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOPIC 06: Teamwork and Problem-Solving -->
+        <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+            <div class="step-badge">6</div>
+            <div>
+              <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Collaborative Innovation</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white">Teamwork and Problem-Solving</h2>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              Participated in problem-solving activities that encouraged brainstorming, collaboration, logical thinking, and the exploration of practical solutions to real-world challenges.
+            </p>
+            <p>
+              Through group ideation sessions, we debated diverse approaches, mapped user personas, challenged initial assumptions, and unified our team members’ diverse analytical and creative perspectives. This collaborative culture deepened our confidence in working as a synchronized engineering unit tackling complex retail innovation challenges.
+            </p>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center font-mono text-xs">
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <i class="fa-solid fa-lightbulb text-gold-400 block mb-1"></i>
+              <span class="text-white font-semibold">Brainstorming</span>
+            </div>
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <i class="fa-solid fa-people-group text-gold-400 block mb-1"></i>
+              <span class="text-white font-semibold">Collaboration</span>
+            </div>
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <i class="fa-solid fa-brain text-gold-400 block mb-1"></i>
+              <span class="text-white font-semibold">Logical Analysis</span>
+            </div>
+            <div class="p-3 rounded-xl bg-obsidian-950 border border-gold-500/20">
+              <i class="fa-solid fa-circle-check text-gold-400 block mb-1"></i>
+              <span class="text-white font-semibold">Actionable Solutions</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- RESPONSIVE IMAGE GALLERY SECTION -->
+      <!-- ============================================================ -->
+      <section class="luxe-gold-card p-8 sm:p-10 rounded-3xl mb-12" data-aos="fade-up">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gold-500/20">
+          <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-images"></i>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-gold-400 uppercase font-bold tracking-wider">Visual Documentation</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Week 2 Activity Photo Gallery</h2>
+          </div>
+        </div>
+
+        <p class="text-obsidian-300 text-sm mb-6">
+          Actual workshop, presentation, and collaborative project photos from Week 2 learning sessions at PRICE ProtoSem.
+        </p>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Gallery Item 1 -->
+          <div class="photo-frame flex flex-col justify-between group">
+            <div class="relative bg-black h-72 sm:h-80 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week2/5s-workplace-organization.jpg" 
+                onerror="this.src='images/week2/5s-workplace-organization.jpg'" 
+                alt="Japanese 5S Workplace Organization Activity" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-gold-500/30 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                5S Activity
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">Japanese 5S Organization</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Sorting and setting components in order with partitioned workbench organizers.</p>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="photo-frame flex flex-col justify-between group">
+            <div class="relative bg-black h-72 sm:h-80 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week2/chatbot-intent-configuration.jpg" 
+                onerror="this.src='images/week2/chatbot-intent-configuration.jpg'" 
+                alt="Introduction to Chatbot Technology and Intent Configuration" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-gold-500/30 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                Conversational AI
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">Chatbot Technology</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Presenting Intent Configuration, training phrases, and automated response design.</p>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="photo-frame flex flex-col justify-between group">
+            <div class="relative bg-black h-72 sm:h-80 overflow-hidden flex items-center justify-center">
+              <img 
+                src="public/images/week2/meme-creation-challenge.jpg" 
+                onerror="this.src='images/week2/meme-creation-challenge.jpg'" 
+                alt="One-Day Meme Creation Challenge Scratch Showcase" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-gold-500/30 text-gold-300 text-[10px] font-mono font-bold uppercase">
+                Creative Sprint
+              </div>
+            </div>
+            <div class="p-4 bg-obsidian-950 border-t border-gold-500/20 flex-grow flex flex-col justify-center">
+              <h3 class="text-xs font-bold text-white mb-1">Meme Creation Challenge</h3>
+              <p class="text-[11px] text-obsidian-400 leading-snug">Pitching rapid visual storytelling and Scratch animations under 24h constraints.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Key Activities & Milestones Section -->
+      <div class="mb-12" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-6">
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Key Activities & Milestones Summary</h2>
+          <div class="h-px bg-gold-500/20 flex-grow"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+          <!-- Highlight 1 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-cubes-stacked"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Japanese 5S Methodology</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Mastered Sort, Set in Order, Shine, Standardize, and Sustain to build clutter-free, efficient, and disciplined engineering workspaces.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#5SMethodology #WorkspaceOrganization #Efficiency</span>
+            </div>
+          </div>
+
+          <!-- Highlight 2 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Introduction to Chatbots</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Explored natural conversation flows, intent classification, training phrase compilation, and automated message handling.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#ChatbotArchitecture #IntentConfiguration #ConversationalAI</span>
+            </div>
+          </div>
+
+          <!-- Highlight 3 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-diagram-project"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Understanding Algorithms</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Learned how systematic, logical step-by-step procedures allow structured problem decomposition and algorithmic execution.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#Algorithms #ComputationalLogic #StepByStep</span>
+            </div>
+          </div>
+
+          <!-- Highlight 4 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-masks-theater"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">One-Day Meme Challenge</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Designed and pitched creative memes within 24 hours, enhancing visual communication, concise messaging, and time management.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#VisualCommunication #CreativeThinking #TimeManagement</span>
+            </div>
+          </div>
+
+          <!-- Highlight 5 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">MIT App Inventor Prototyping</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Built mobile application prototypes addressing our team’s assigned problem statement with visual block programming and UI components.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#MITAppInventor #MobilePrototyping #BlockCoding</span>
+            </div>
+          </div>
+
+          <!-- Highlight 6 -->
+          <div class="luxe-gold-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-users-gear"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Teamwork & Problem-Solving</h3>
+              <p class="text-obsidian-300 text-sm sm:text-base leading-relaxed">
+                Collaborated in structured brainstorming and analytical sessions to explore practical, validated solutions for real-world scenarios.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gold-500/15">
+              <span class="text-[11px] font-mono text-gold-400">#TeamCollaboration #Brainstorming #ProblemSolving</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Skills & Topic Tags -->
+      <div class="luxe-gold-card p-8 rounded-3xl mb-12" data-aos="fade-up" data-aos-delay="250">
+        <h3 class="text-xs font-mono font-bold text-gold-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-tags text-gold-400"></i>
+          <span>Topics & Keywords Covered</span>
+        </h3>
+        <div class="flex flex-wrap gap-2.5">
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Japanese 5S</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Sort SetInOrder Shine</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Chatbot Technology</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Intent Configuration</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Algorithms</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Step-by-Step Logic</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#One-Day Meme Challenge</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Visual Communication</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#MIT App Inventor</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Mobile Prototyping</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Teamwork</span>
+          <span class="tag-badge px-3.5 py-1.5 rounded-full bg-obsidian-950 border border-gold-500/30 text-obsidian-200 text-xs font-mono font-semibold cursor-default">#Problem Solving</span>
+        </div>
+      </div>
+
+      <!-- Navigation & Action Footer -->
+      <div class="luxe-gold-card p-8 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6" data-aos="fade-up">
+        <div>
+          <p class="text-xs uppercase font-mono text-gold-400 font-bold mb-1">PRICE ProtoSem Archive</p>
+          <p class="text-base sm:text-lg font-bold text-white">Explore previous weeks or return to portfolio</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="week-1.html" class="px-5 py-3 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Week 1</span>
+          </a>
+          <a href="index.html#protosem" class="btn-gold px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+            <span>Portfolio Archive</span>
+          </a>
+          <a href="week-06.html" class="px-5 py-3 rounded-full bg-obsidian-900 border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 text-xs font-bold font-mono transition-all flex items-center gap-2 hidden sm:flex">
+            <span>Week 06</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-obsidian-950 py-8 text-center text-xs text-obsidian-400 border-t border-gold-500/20">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
+      <span>© 2026 Brindha . S • PRICE ProtoSem Trainee</span>
+      <a href="index.html#protosem" class="text-gold-400 hover:underline">View All 20 Weeks</a>
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+</body>
+</html>

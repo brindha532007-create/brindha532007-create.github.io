@@ -1630,10 +1630,64 @@
         ],
         tags: ['Design Thinking', '30 Circles Activity', 'Retail Sector Evolution', 'Value Chain', 'SWOT Analysis', 'Market Research'],
         discipline: 'Design Thinking & Market Intelligence'
+      },
+      {
+        week: 2,
+        weekFormatted: 'WEEK 02',
+        title: 'Week 02 // 5S Methodology, Chatbots, Algorithms & Mobile Development',
+        phase: 1,
+        phaseLabel: 'PHASE 01',
+        slug: 'week-02',
+        status: 'completed',
+        statusText: '5S, CHATBOTS & APP INVENTOR',
+        pageUrl: 'week-2.html',
+        summaryHtml: `
+          <div class="space-y-4 text-obsidian-200 text-sm sm:text-base leading-relaxed">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian-950 border border-gold-500/30 text-gold-400 text-xs font-mono font-bold uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-sparkles text-gold-400"></i>
+              <span>Week 2 Milestones & Prototyping</span>
+            </div>
+            
+            <p>
+              Week 2 blended structured workplace discipline with modern computing technologies. We learned the <strong>Japanese 5S Methodology</strong> (Sort, Set in Order, Shine, Standardize, Sustain) for workplace efficiency, explored <strong>Chatbot Technology</strong> and conversational intent architecture, understood systematic <strong>Algorithms</strong>, tackled the high-energy <strong>One-Day Meme Creation Challenge</strong>, developed mobile apps with <strong>MIT App Inventor</strong>, and engaged in collaborative <strong>Team Problem-Solving</strong>.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-obsidian-950 border border-gold-500/30 text-gold-300 font-semibold text-sm sm:text-base flex items-center gap-2.5">
+              <span>✨</span>
+              <span>Workplace 5S Discipline → Conversational AI → Algorithmic Problem-Solving → Mobile Prototyping!</span>
+            </div>
+
+            <!-- Activity Photo Previews -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div class="rounded-xl overflow-hidden border border-gold-500/25 bg-obsidian-950 flex flex-col">
+                <img src="public/images/week2/5s-workplace-organization.jpg" onerror="this.src=\'images/week2/5s-workplace-organization.jpg\'" alt="Japanese 5S Workplace Organization Activity" class="w-full h-28 object-cover">
+                <div class="p-2 text-[11px] font-mono text-obsidian-300 text-center">Japanese 5S Organization</div>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gold-500/25 bg-obsidian-950 flex flex-col">
+                <img src="public/images/week2/chatbot-intent-configuration.jpg" onerror="this.src=\'images/week2/chatbot-intent-configuration.jpg\'" alt="Chatbot Intent Configuration Presentation" class="w-full h-28 object-cover">
+                <div class="p-2 text-[11px] font-mono text-obsidian-300 text-center">Chatbot Technology</div>
+              </div>
+              <div class="rounded-xl overflow-hidden border border-gold-500/25 bg-obsidian-950 flex flex-col">
+                <img src="public/images/week2/meme-creation-challenge.jpg" onerror="this.src=\'images/week2/meme-creation-challenge.jpg\'" alt="One-Day Meme Creation Challenge Presentation" class="w-full h-28 object-cover">
+                <div class="p-2 text-[11px] font-mono text-obsidian-300 text-center">Meme Creation Challenge</div>
+              </div>
+            </div>
+          </div>
+        `,
+        highlights: [
+          { icon: 'fa-cubes-stacked', title: 'Japanese 5S Workplace Organization', desc: 'Applied Sort, Set in Order, Shine, Standardize, and Sustain for workstation efficiency, organization, and discipline.' },
+          { icon: 'fa-robot', title: 'Introduction to Chatbot Technology', desc: 'Explored conversational architecture, user interaction, intent configuration, and automated responses.' },
+          { icon: 'fa-diagram-project', title: 'Understanding Algorithms', desc: 'Understood systematic step-by-step logical instructions for decomposing and solving computational problems.' },
+          { icon: 'fa-masks-theater', title: 'One-Day Meme Creation Challenge', desc: 'Designed creative memes within 24 hours to hone visual communication, time management, and rapid ideation.' },
+          { icon: 'fa-mobile-screen-button', title: 'Mobile App Development (MIT App Inventor)', desc: 'Created block-based mobile applications addressing assigned retail problem statements.' },
+          { icon: 'fa-users-gear', title: 'Teamwork and Problem-Solving', desc: 'Collaborated in brainstorming sessions and logical analysis to develop practical real-world solutions.' }
+        ],
+        tags: ['Japanese 5S', 'Chatbot Technology', 'Algorithms', 'Meme Challenge', 'MIT App Inventor', 'Teamwork', 'Problem-Solving'],
+        discipline: '5S Methodology, Conversational AI & Mobile Prototyping'
       }
     ];
 
-    for (let i = 2; i <= 20; i++) {
+    for (let i = 3; i <= 20; i++) {
       const phaseNum = Math.ceil(i / 5);
       const weekFormatted = i < 10 ? '0' + i : '' + i;
       if (i === 6) {
